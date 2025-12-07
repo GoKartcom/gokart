@@ -12,10 +12,10 @@ export function Footer() {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary">
                 <Leaf className="h-6 w-6 text-primary-foreground" />
               </div>
-              <span className="font-display text-xl font-bold">FreshLocal</span>
+              <span className="font-display text-xl font-bold">GoKartcom</span>
             </Link>
             <p className="text-sm text-muted-foreground">
-              Connecting you with trusted local vendors for the freshest produce delivered right to your doorstep.
+              Connecting you with trusted local vendors for the freshest produce delivered right to your doorstep in Mumbai Vasai.
             </p>
             <div className="flex gap-4">
               <a href="#" className="text-muted-foreground transition-colors hover:text-primary">
@@ -51,16 +51,38 @@ export function Footer() {
           <div>
             <h4 className="mb-4 font-display text-lg font-semibold">Support</h4>
             <ul className="space-y-3">
-              {["FAQs", "Delivery Info", "Returns Policy", "Privacy Policy"].map((link) => (
-                <li key={link}>
-                  <a
-                    href="#"
-                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link
+                  to="/contact"
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                >
+                  FAQs
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/contact"
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                >
+                  Delivery Info
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/refund-policy"
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                >
+                  Refund & Returns
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                >
+                  Privacy Policy
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -70,15 +92,15 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4 text-primary" />
-                hello@freshlocal.com
+                gokartcomm@gmail.com
               </li>
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4 text-primary" />
-                +91 98765 43210
+                +91 9529647402
               </li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground">
                 <MapPin className="mt-0.5 h-4 w-4 text-primary" />
-                <span>123 Market Street, Bangalore, India 560001</span>
+                <span>Mumbai Vasai, Maharashtra, India</span>
               </li>
             </ul>
           </div>
@@ -86,7 +108,7 @@ export function Footer() {
 
         <div className="mt-12 border-t border-border pt-6 text-center">
           <p className="text-sm text-muted-foreground">
-            © 2024 FreshLocal. All rights reserved. Made with 💚 for local communities.
+            © 2024 GoKartcom. All rights reserved. Made with 💚 for local communities.
           </p>
         </div>
       </div>
