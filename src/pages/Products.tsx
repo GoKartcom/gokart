@@ -2,81 +2,60 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, Filter, Star, Clock, Plus, ShoppingCart } from "lucide-react";
+import { Search, Filter, Star, Clock, Plus, ShoppingCart, Flame, Percent } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import tomatoesImg from "@/assets/product-tomatoes.jpg";
 import spinachImg from "@/assets/product-spinach.jpg";
 
-const categories = ["All", "Vegetables", "Fruits", "Leafy Greens", "Organic", "Seasonal"];
+const categories = ["All", "Vegetables", "Fruits", "Leafy Greens", "Organic", "Bestsellers", "Offers"];
 
 const products = [
-  {
-    id: 1,
-    name: "Fresh Tomatoes",
-    vendor: "Lakshmi's Farm",
-    price: 40,
-    unit: "kg",
-    rating: 4.8,
-    freshness: "Harvested Today",
-    image: tomatoesImg,
-    category: "Vegetables",
-  },
-  {
-    id: 2,
-    name: "Organic Spinach",
-    vendor: "Green Valley",
-    price: 30,
-    unit: "bunch",
-    rating: 4.9,
-    freshness: "Harvested Today",
-    image: spinachImg,
-    category: "Leafy Greens",
-  },
-  {
-    id: 3,
-    name: "Sweet Mangoes",
-    vendor: "Rajesh Fruits",
-    price: 120,
-    unit: "kg",
-    rating: 4.7,
-    freshness: "1 Day Ago",
-    image: "https://images.unsplash.com/photo-1553279768-865429fa0078?w=400&h=400&fit=crop",
-    category: "Fruits",
-  },
-  {
-    id: 4,
-    name: "Fresh Carrots",
-    vendor: "Organic Farms",
-    price: 45,
-    unit: "kg",
-    rating: 4.6,
-    freshness: "Harvested Today",
-    image: "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&h=400&fit=crop",
-    category: "Vegetables",
-  },
-  {
-    id: 5,
-    name: "Green Capsicum",
-    vendor: "Fresh Greens",
-    price: 60,
-    unit: "kg",
-    rating: 4.5,
-    freshness: "Harvested Today",
-    image: "https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=400&h=400&fit=crop",
-    category: "Vegetables",
-  },
-  {
-    id: 6,
-    name: "Bananas",
-    vendor: "Tropical Fruits",
-    price: 35,
-    unit: "dozen",
-    rating: 4.8,
-    freshness: "2 Days Ago",
-    image: "https://images.unsplash.com/photo-1603833665858-e61d17a86224?w=400&h=400&fit=crop",
-    category: "Fruits",
-  },
+  // VEGETABLES
+  { id: 1, name: "Fresh Tomatoes", vendor: "Lakshmi's Farm", price: 25, unit: "kg", rating: 4.8, freshness: "Harvested Today", image: tomatoesImg, category: "Vegetables", isBestseller: true, offer: 20 },
+  { id: 2, name: "Fresh Carrots", vendor: "Organic Farms", price: 30, unit: "kg", rating: 4.6, freshness: "Harvested Today", image: "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&h=400&fit=crop", category: "Vegetables" },
+  { id: 3, name: "Green Capsicum", vendor: "Fresh Greens", price: 35, unit: "kg", rating: 4.5, freshness: "Harvested Today", image: "https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=400&h=400&fit=crop", category: "Vegetables", offer: 15 },
+  { id: 4, name: "Potatoes", vendor: "Vasai Farms", price: 20, unit: "kg", rating: 4.7, freshness: "Fresh Stock", image: "https://images.unsplash.com/photo-1518977676601-b53f82ber499?w=400&h=400&fit=crop", category: "Vegetables", isBestseller: true },
+  { id: 5, name: "Onions", vendor: "Local Market", price: 18, unit: "kg", rating: 4.8, freshness: "Fresh Stock", image: "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=400&h=400&fit=crop", category: "Vegetables", isBestseller: true },
+  { id: 6, name: "Cauliflower", vendor: "Green Valley", price: 28, unit: "piece", rating: 4.6, freshness: "Harvested Today", image: "https://images.unsplash.com/photo-1568584711075-3d021a7c3ca3?w=400&h=400&fit=crop", category: "Vegetables" },
+  { id: 7, name: "Cabbage", vendor: "Organic Farms", price: 22, unit: "piece", rating: 4.5, freshness: "Fresh Stock", image: "https://images.unsplash.com/photo-1594282486552-05b4d80fbb9f?w=400&h=400&fit=crop", category: "Vegetables", offer: 10 },
+  { id: 8, name: "Brinjal", vendor: "Lakshmi's Farm", price: 24, unit: "kg", rating: 4.4, freshness: "Harvested Today", image: "https://images.unsplash.com/photo-1615484477778-ca3b77940c25?w=400&h=400&fit=crop", category: "Vegetables" },
+  { id: 9, name: "Lady Finger (Bhindi)", vendor: "Fresh Greens", price: 32, unit: "kg", rating: 4.6, freshness: "Harvested Today", image: "https://images.unsplash.com/photo-1425543103986-22abb7d7e8d2?w=400&h=400&fit=crop", category: "Vegetables" },
+  { id: 10, name: "Bottle Gourd (Lauki)", vendor: "Vasai Farms", price: 18, unit: "piece", rating: 4.5, freshness: "Fresh Stock", image: "https://images.unsplash.com/photo-1590005354167-6da97870c757?w=400&h=400&fit=crop", category: "Vegetables" },
+  { id: 11, name: "Bitter Gourd (Karela)", vendor: "Organic Farms", price: 35, unit: "kg", rating: 4.3, freshness: "Harvested Today", image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&h=400&fit=crop", category: "Vegetables" },
+  { id: 12, name: "Pumpkin", vendor: "Local Market", price: 15, unit: "kg", rating: 4.6, freshness: "Fresh Stock", image: "https://images.unsplash.com/photo-1506917728037-b6af01a7d403?w=400&h=400&fit=crop", category: "Vegetables", offer: 25 },
+  { id: 13, name: "Green Peas", vendor: "Green Valley", price: 45, unit: "kg", rating: 4.8, freshness: "Harvested Today", image: "https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=400&h=400&fit=crop", category: "Vegetables", isBestseller: true },
+  { id: 14, name: "Cucumber", vendor: "Fresh Greens", price: 20, unit: "kg", rating: 4.7, freshness: "Harvested Today", image: "https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?w=400&h=400&fit=crop", category: "Vegetables" },
+  { id: 15, name: "Radish", vendor: "Vasai Farms", price: 18, unit: "bunch", rating: 4.4, freshness: "Fresh Stock", image: "https://images.unsplash.com/photo-1447175008436-054170c2e979?w=400&h=400&fit=crop", category: "Vegetables" },
+  { id: 16, name: "Beetroot", vendor: "Organic Farms", price: 28, unit: "kg", rating: 4.5, freshness: "Harvested Today", image: "https://images.unsplash.com/photo-1593105544559-ecb03bf76f82?w=400&h=400&fit=crop", category: "Vegetables" },
+  { id: 17, name: "Drumstick", vendor: "Local Market", price: 40, unit: "bunch", rating: 4.6, freshness: "Fresh Stock", image: "https://images.unsplash.com/photo-1567375698348-5d9d5ae266d6?w=400&h=400&fit=crop", category: "Vegetables" },
+  { id: 18, name: "French Beans", vendor: "Green Valley", price: 38, unit: "kg", rating: 4.5, freshness: "Harvested Today", image: "https://images.unsplash.com/photo-1567375698348-5d9d5ae266d6?w=400&h=400&fit=crop", category: "Vegetables" },
+  
+  // LEAFY GREENS
+  { id: 19, name: "Organic Spinach", vendor: "Green Valley", price: 15, unit: "bunch", rating: 4.9, freshness: "Harvested Today", image: spinachImg, category: "Leafy Greens", isBestseller: true, offer: 30 },
+  { id: 20, name: "Coriander (Dhaniya)", vendor: "Local Market", price: 10, unit: "bunch", rating: 4.8, freshness: "Harvested Today", image: "https://images.unsplash.com/photo-1592502712628-4c3a6ae6e5de?w=400&h=400&fit=crop", category: "Leafy Greens" },
+  { id: 21, name: "Mint (Pudina)", vendor: "Fresh Greens", price: 10, unit: "bunch", rating: 4.7, freshness: "Harvested Today", image: "https://images.unsplash.com/photo-1628556270448-4d4e4148e1b1?w=400&h=400&fit=crop", category: "Leafy Greens" },
+  { id: 22, name: "Fenugreek (Methi)", vendor: "Organic Farms", price: 12, unit: "bunch", rating: 4.6, freshness: "Harvested Today", image: "https://images.unsplash.com/photo-1515543904379-3d757afe72e4?w=400&h=400&fit=crop", category: "Leafy Greens", offer: 20 },
+  { id: 23, name: "Curry Leaves", vendor: "Vasai Farms", price: 8, unit: "bunch", rating: 4.8, freshness: "Fresh Stock", image: "https://images.unsplash.com/photo-1600689052253-883c5a625ff4?w=400&h=400&fit=crop", category: "Leafy Greens" },
+  { id: 24, name: "Amaranth (Lal Bhaji)", vendor: "Green Valley", price: 15, unit: "bunch", rating: 4.5, freshness: "Harvested Today", image: "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?w=400&h=400&fit=crop", category: "Leafy Greens" },
+  
+  // FRUITS
+  { id: 25, name: "Bananas", vendor: "Tropical Fruits", price: 25, unit: "dozen", rating: 4.8, freshness: "Fresh Stock", image: "https://images.unsplash.com/photo-1603833665858-e61d17a86224?w=400&h=400&fit=crop", category: "Fruits", isBestseller: true },
+  { id: 26, name: "Sweet Mangoes", vendor: "Rajesh Fruits", price: 80, unit: "kg", rating: 4.7, freshness: "1 Day Ago", image: "https://images.unsplash.com/photo-1553279768-865429fa0078?w=400&h=400&fit=crop", category: "Fruits", offer: 15 },
+  { id: 27, name: "Apples", vendor: "Kashmir Orchards", price: 120, unit: "kg", rating: 4.8, freshness: "Fresh Stock", image: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400&h=400&fit=crop", category: "Fruits", isBestseller: true },
+  { id: 28, name: "Oranges", vendor: "Nagpur Fresh", price: 50, unit: "kg", rating: 4.6, freshness: "Fresh Stock", image: "https://images.unsplash.com/photo-1547514701-42782101795e?w=400&h=400&fit=crop", category: "Fruits", offer: 20 },
+  { id: 29, name: "Papaya", vendor: "Tropical Fruits", price: 35, unit: "piece", rating: 4.5, freshness: "Ripe & Fresh", image: "https://images.unsplash.com/photo-1526318472351-c75fcf070305?w=400&h=400&fit=crop", category: "Fruits" },
+  { id: 30, name: "Watermelon", vendor: "Local Market", price: 20, unit: "kg", rating: 4.7, freshness: "Fresh Stock", image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&h=400&fit=crop", category: "Fruits", offer: 25 },
+  { id: 31, name: "Pomegranate", vendor: "Rajesh Fruits", price: 100, unit: "kg", rating: 4.8, freshness: "Fresh Stock", image: "https://images.unsplash.com/photo-1541344999736-83eca272f6fc?w=400&h=400&fit=crop", category: "Fruits", isBestseller: true },
+  { id: 32, name: "Grapes", vendor: "Nashik Vineyards", price: 60, unit: "kg", rating: 4.7, freshness: "Fresh Stock", image: "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=400&h=400&fit=crop", category: "Fruits", offer: 10 },
+  { id: 33, name: "Guava", vendor: "Tropical Fruits", price: 40, unit: "kg", rating: 4.6, freshness: "Fresh Stock", image: "https://images.unsplash.com/photo-1536511132770-e5058c7e8c46?w=400&h=400&fit=crop", category: "Fruits" },
+  { id: 34, name: "Sweet Lime (Mosambi)", vendor: "Local Market", price: 45, unit: "kg", rating: 4.5, freshness: "Fresh Stock", image: "https://images.unsplash.com/photo-1590502593747-42a996133562?w=400&h=400&fit=crop", category: "Fruits" },
+  { id: 35, name: "Pineapple", vendor: "Rajesh Fruits", price: 50, unit: "piece", rating: 4.7, freshness: "Ripe & Fresh", image: "https://images.unsplash.com/photo-1550258987-190a2d41a8ba?w=400&h=400&fit=crop", category: "Fruits" },
+  { id: 36, name: "Coconut", vendor: "Kerala Fresh", price: 30, unit: "piece", rating: 4.8, freshness: "Fresh Stock", image: "https://images.unsplash.com/photo-1580984969071-a8da8c33df60?w=400&h=400&fit=crop", category: "Fruits" },
+  { id: 37, name: "Lemon", vendor: "Local Market", price: 60, unit: "kg", rating: 4.6, freshness: "Fresh Stock", image: "https://images.unsplash.com/photo-1587486913049-53fc88980cfc?w=400&h=400&fit=crop", category: "Fruits" },
+  { id: 38, name: "Chickoo (Sapota)", vendor: "Tropical Fruits", price: 70, unit: "kg", rating: 4.5, freshness: "Ripe & Fresh", image: "https://images.unsplash.com/photo-1478145787956-f6f12c59624d?w=400&h=400&fit=crop", category: "Fruits" },
+  { id: 39, name: "Custard Apple", vendor: "Rajesh Fruits", price: 90, unit: "kg", rating: 4.6, freshness: "Fresh Stock", image: "https://images.unsplash.com/photo-1568702846914-96b305d2uj38?w=400&h=400&fit=crop", category: "Fruits" },
+  { id: 40, name: "Jackfruit", vendor: "Kerala Fresh", price: 40, unit: "kg", rating: 4.4, freshness: "Fresh Stock", image: "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=400&h=400&fit=crop", category: "Fruits" },
 ];
 
 export default function Products() {
@@ -84,10 +63,17 @@ export default function Products() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredProducts = products.filter((product) => {
-    const matchesCategory = activeCategory === "All" || product.category === activeCategory;
+    const matchesCategory = 
+      activeCategory === "All" || 
+      product.category === activeCategory ||
+      (activeCategory === "Bestsellers" && product.isBestseller) ||
+      (activeCategory === "Offers" && product.offer);
     const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
+
+  const dealOfTheDay = products.find(p => p.offer && p.offer >= 25);
+  const bestsellers = products.filter(p => p.isBestseller).slice(0, 4);
 
   return (
     <div className="min-h-screen bg-background">
@@ -137,6 +123,58 @@ export default function Products() {
           ))}
         </div>
 
+        {/* Deal of the Day */}
+        {dealOfTheDay && (
+          <div className="mb-10 overflow-hidden rounded-3xl bg-gradient-to-r from-primary/10 via-accent/10 to-primary/5 border border-primary/20">
+            <div className="flex flex-col md:flex-row items-center p-6 gap-6">
+              <div className="relative w-full md:w-48 h-48 rounded-2xl overflow-hidden flex-shrink-0">
+                <img src={dealOfTheDay.image} alt={dealOfTheDay.name} className="h-full w-full object-cover" />
+                <div className="absolute top-2 left-2 bg-destructive text-destructive-foreground px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
+                  <Flame className="h-4 w-4" /> {dealOfTheDay.offer}% OFF
+                </div>
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <span className="text-xs font-semibold uppercase tracking-wider text-primary">🔥 Deal of the Day</span>
+                <h3 className="font-display text-2xl font-bold text-foreground mt-1">{dealOfTheDay.name}</h3>
+                <p className="text-muted-foreground mt-1">From {dealOfTheDay.vendor}</p>
+                <div className="flex items-center gap-3 mt-3 justify-center md:justify-start">
+                  <span className="text-3xl font-bold text-primary">₹{Math.round(dealOfTheDay.price * (1 - dealOfTheDay.offer / 100))}</span>
+                  <span className="text-lg text-muted-foreground line-through">₹{dealOfTheDay.price}</span>
+                  <span className="text-sm text-muted-foreground">/{dealOfTheDay.unit}</span>
+                </div>
+                <Button className="mt-4" variant="fresh">
+                  <Plus className="h-4 w-4" /> Add to Cart
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Bestsellers Section */}
+        {activeCategory === "All" && (
+          <div className="mb-10">
+            <div className="flex items-center gap-2 mb-4">
+              <Flame className="h-5 w-5 text-primary" />
+              <h2 className="font-display text-xl font-bold text-foreground">Bestsellers</h2>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {bestsellers.map((product) => (
+                <Link
+                  key={product.id}
+                  to={`/products/${product.id}`}
+                  className="group flex items-center gap-3 rounded-xl border border-border bg-card p-3 transition-all hover:shadow-card"
+                >
+                  <img src={product.image} alt={product.name} className="h-16 w-16 rounded-lg object-cover" />
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-medium text-foreground truncate">{product.name}</h4>
+                    <p className="text-sm text-primary font-bold">₹{product.price}/{product.unit}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Products Grid */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filteredProducts.map((product) => (
@@ -151,11 +189,21 @@ export default function Products() {
                   alt={product.name}
                   className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute left-3 top-3">
+                <div className="absolute left-3 top-3 flex flex-col gap-1">
                   <span className="freshness-badge">
                     <Clock className="h-3 w-3" />
                     {product.freshness}
                   </span>
+                  {product.offer && (
+                    <span className="inline-flex items-center gap-1 rounded-full bg-destructive px-2 py-0.5 text-xs font-medium text-destructive-foreground">
+                      <Percent className="h-3 w-3" /> {product.offer}% OFF
+                    </span>
+                  )}
+                  {product.isBestseller && (
+                    <span className="inline-flex items-center gap-1 rounded-full bg-trust-gold px-2 py-0.5 text-xs font-medium text-foreground">
+                      <Flame className="h-3 w-3" /> Bestseller
+                    </span>
+                  )}
                 </div>
               </div>
               <div className="p-4">
@@ -170,10 +218,19 @@ export default function Products() {
                   {product.name}
                 </h3>
                 <div className="mt-3 flex items-center justify-between">
-                  <p className="text-lg font-bold text-primary">
-                    ₹{product.price}
-                    <span className="text-sm font-normal text-muted-foreground">/{product.unit}</span>
-                  </p>
+                  <div>
+                    {product.offer ? (
+                      <div className="flex items-center gap-2">
+                        <p className="text-lg font-bold text-primary">
+                          ₹{Math.round(product.price * (1 - product.offer / 100))}
+                        </p>
+                        <p className="text-sm text-muted-foreground line-through">₹{product.price}</p>
+                      </div>
+                    ) : (
+                      <p className="text-lg font-bold text-primary">₹{product.price}</p>
+                    )}
+                    <span className="text-xs text-muted-foreground">per {product.unit}</span>
+                  </div>
                   <Button size="sm" variant="fresh" onClick={(e) => e.preventDefault()}>
                     <Plus className="h-4 w-4" />
                     Add
