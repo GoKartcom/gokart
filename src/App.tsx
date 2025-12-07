@@ -10,6 +10,7 @@ import About from "./pages/About";
 import Vendor from "./pages/Vendor";
 import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
+import RefundPolicy from "./pages/RefundPolicy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/vendor" element={<Vendor />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/refund-policy" element={<RefundPolicy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
