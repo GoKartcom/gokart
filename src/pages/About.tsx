@@ -49,7 +49,7 @@ export default function About() {
               Bringing Fresh Produce<br />From Farm to Family
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              TruLocal was born from a simple belief: everyone deserves access to truly fresh, 
+              Klickit was born from a simple belief: everyone deserves access to truly fresh, 
               locally-sourced produce while supporting the vendors in their community.
             </p>
           </div>
@@ -81,7 +81,7 @@ export default function About() {
                   Reinventing the Local Market Experience
                 </h2>
                 <p className="mt-6 text-muted-foreground">
-                  In a world of dark stores and cold storage, we chose a different path. TruLocal 
+                  In a world of dark stores and cold storage, we chose a different path. Klickit 
                   partners with neighborhood vendors in Mumbai Vasai—the same families who've been selling fresh 
                   produce for generations—to bring their goods directly to your doorstep.
                 </p>
@@ -154,7 +154,7 @@ export default function About() {
                   <h3 className="font-display text-xl font-semibold text-foreground">Lakshmi Devi</h3>
                   <p className="text-sm text-primary">Vegetable Vendor • Vasai West</p>
                   <p className="mt-3 text-muted-foreground">
-                    "For 20 years, I sold vegetables at the local market. TruLocal helped me reach 
+                    "For 20 years, I sold vegetables at the local market. Klickit helped me reach 
                     customers across the city while keeping the personal connection I cherish."
                   </p>
                 </div>
@@ -169,7 +169,7 @@ export default function About() {
                   <h3 className="font-display text-xl font-semibold text-foreground">Rajesh Kumar</h3>
                   <p className="text-sm text-primary">Fruit Vendor • Vasai East</p>
                   <p className="mt-3 text-muted-foreground">
-                    "My family has been in the fruit business for three generations. With TruLocal, 
+                    "My family has been in the fruit business for three generations. With Klickit, 
                     we've grown our customer base by 300% while maintaining our quality standards."
                   </p>
                 </div>

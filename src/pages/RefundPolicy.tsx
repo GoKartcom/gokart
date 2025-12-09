@@ -42,7 +42,7 @@ const policies = [
   {
     title: "Refund Timeline",
     items: [
-      "Instant refund to TruLocal wallet",
+      "Instant refund to Klickit wallet",
       "3-5 business days for bank/card refunds",
       "UPI refunds processed within 24 hours",
     ],

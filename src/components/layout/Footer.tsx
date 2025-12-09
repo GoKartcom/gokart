@@ -12,7 +12,7 @@ export function Footer() {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary">
                 <Leaf className="h-6 w-6 text-primary-foreground" />
               </div>
-              <span className="font-display text-xl font-bold">TruLocal</span>
+              <span className="font-display text-xl font-bold">Klickit</span>
             </Link>
             <p className="text-sm text-muted-foreground">
               Connecting you with trusted local vendors for the freshest produce delivered right to your doorstep in Mumbai Vasai.
@@ -108,7 +108,7 @@ export function Footer() {
 
         <div className="mt-12 border-t border-border pt-6 text-center">
           <p className="text-sm text-muted-foreground">
-            © 2024 TruLocal. All rights reserved. Made with 💚 for local communities.
+            © 2024 Klickit. All rights reserved. Made with 💚 for local communities.
           </p>
         </div>
       </div>
