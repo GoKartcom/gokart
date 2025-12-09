@@ -23,7 +23,7 @@ export function Navbar() {
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary">
             <Leaf className="h-6 w-6 text-primary-foreground" />
           </div>
-          <span className="font-display text-xl font-bold text-foreground">TruLocal</span>
+          <span className="font-display text-xl font-bold text-foreground">Klickit</span>
         </Link>
 
         {/* Desktop Navigation */}
