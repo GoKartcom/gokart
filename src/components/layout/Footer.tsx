@@ -34,14 +34,30 @@ export function Footer() {
           <div>
             <h4 className="mb-4 font-display text-lg font-semibold">Quick Links</h4>
             <ul className="space-y-3">
-              {["Products", "About Us", "Vendor Portal", "Contact"].map((link) => (
-                <li key={link}>
-                  <Link
-                    to={`/${link.toLowerCase().replace(" ", "-")}`}
-                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
-                  >
-                    {link}
-                  </Link>
+              {[
+                { label: "Products", path: "/products", isExternal: false },
+                { label: "About Us", path: "/about", isExternal: false },
+                { label: "Vendor Portal", path: "https://klickit-merchant.vercel.app/", isExternal: true },
+                { label: "Contact", path: "/contact", isExternal: false },
+              ].map((link) => (
+                <li key={link.label}>
+                  {link.isExternal ? (
+                    <a
+                      href={link.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.path}
+                      className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

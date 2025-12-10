@@ -33,7 +33,7 @@ export function CTASection() {
                     <ArrowRight className="h-5 w-5" />
                   </Button>
                 </Link>
-                <Link to="/vendor">
+                <Link to="https://klickit-merchant.vercel.app/">
                   <Button
                     variant="outline"
                     size="xl"

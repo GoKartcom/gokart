@@ -32,7 +32,7 @@ export function HeroSection() {
                   <ArrowRight className="h-5 w-5" />
                 </Button>
               </Link>
-              <Link to="/vendor">
+              <Link to="https://klickit-merchant.vercel.app/">
                 <Button variant="hero-outline" size="xl">
                   Become a Vendor
                 </Button>
