@@ -18,8 +18,9 @@ export function CTASection() {
                   Ready to Experience Fresh?
                 </h2>
                 <p className="text-lg text-primary-foreground/80">
-                  Join thousands of happy customers enjoying farm-fresh produce delivered on their schedule. 
-                  Or become a vendor and grow your business with us.
+                  Join thousands of happy customers enjoying farm-fresh produce
+                  delivered on their schedule. Or become a vendor and grow your
+                  business with us.
                 </p>
               </div>
 
@@ -33,7 +34,7 @@ export function CTASection() {
                     <ArrowRight className="h-5 w-5" />
                   </Button>
                 </Link>
-                <Link to="https://klickit-merchant.vercel.app/">
+                <a href="https://klickit-merchant.vercel.app/">
                   <Button
                     variant="outline"
                     size="xl"
@@ -42,7 +43,7 @@ export function CTASection() {
                     <Store className="h-5 w-5" />
                     Join as Vendor
                   </Button>
-                </Link>
+                </a>
               </div>
             </div>
           </div>

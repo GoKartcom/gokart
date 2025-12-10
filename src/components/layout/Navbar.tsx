@@ -41,8 +41,6 @@ export function Navbar() {
 								<a
 									key={link.externalUrl}
 									href={link.externalUrl}
-									target="_blank"
-									rel="noopener noreferrer"
 									className="rounded-lg px-4 py-2 text-sm font-medium transition-colors text-muted-foreground hover:bg-secondary hover:text-foreground"
 								>
 									{link.name}
@@ -99,8 +97,6 @@ export function Navbar() {
 									<a
 										key={link.externalUrl}
 										href={link.externalUrl}
-										target="_blank"
-										rel="noopener noreferrer"
 										className="rounded-lg px-4 py-3 text-sm font-medium transition-colors text-muted-foreground hover:bg-secondary"
 									>
 										{link.name}

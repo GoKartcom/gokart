@@ -44,8 +44,6 @@ export function Footer() {
                   {link.isExternal ? (
                     <a
                       href={link.path}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       className="text-sm text-muted-foreground transition-colors hover:text-primary"
                     >
                       {link.label}
