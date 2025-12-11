@@ -11,6 +11,7 @@ import Vendor from "./pages/Vendor";
 import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
 import RefundPolicy from "./pages/RefundPolicy";
+import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/refund-policy" element={<RefundPolicy />} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
