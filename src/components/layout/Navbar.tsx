@@ -73,9 +73,16 @@ export function Navbar() {
 							</span>
 						</Button>
 					</Link>
-					<Button variant="hero" size="sm">
-						Shop Now
-					</Button>
+					<Link to="/login">
+						<Button variant="outline" size="sm">
+							Login
+						</Button>
+					</Link>
+					<Link to="/products">
+						<Button variant="hero" size="sm">
+							Shop Now
+						</Button>
+					</Link>
 				</div>
 
 				{/* Mobile Menu Button */}
@@ -119,16 +126,25 @@ export function Navbar() {
 								</Link>
 							);
 						})}
-						<div className="mt-4 flex items-center gap-3">
-							<Link to="/cart" className="flex-1">
-								<Button variant="outline" className="w-full">
-									<ShoppingCart className="h-4 w-4" />
-									Cart (2)
+						<div className="mt-4 flex flex-col gap-3">
+							<div className="flex items-center gap-3">
+								<Link to="/cart" className="flex-1">
+									<Button variant="outline" className="w-full">
+										<ShoppingCart className="h-4 w-4" />
+										Cart (2)
+									</Button>
+								</Link>
+								<Link to="/login" className="flex-1">
+									<Button variant="outline" className="w-full">
+										Login
+									</Button>
+								</Link>
+							</div>
+							<Link to="/products">
+								<Button variant="hero" className="w-full">
+									Shop Now
 								</Button>
 							</Link>
-							<Button variant="hero" className="flex-1">
-								Shop Now
-							</Button>
 						</div>
 					</div>
 				</nav>
