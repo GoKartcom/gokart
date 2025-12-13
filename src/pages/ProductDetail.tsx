@@ -7,17 +7,9 @@ import { useState } from "react";
 import tomatoesImg from "@/assets/product-tomatoes.jpg";
 import vendor1 from "@/assets/vendor-1.jpg";
 
-const deliverySlots = [
-  { id: 1, time: "7:00 AM - 9:00 AM", available: true },
-  { id: 2, time: "10:00 AM - 12:00 PM", available: true },
-  { id: 3, time: "2:00 PM - 4:00 PM", available: false },
-  { id: 4, time: "5:00 PM - 7:00 PM", available: true },
-];
-
 export default function ProductDetail() {
   const { id } = useParams();
   const [quantity, setQuantity] = useState(1);
-  const [selectedSlot, setSelectedSlot] = useState<number | null>(null);
 
   // Mock product data
   const product = {
@@ -139,28 +131,12 @@ export default function ProductDetail() {
               </div>
             </div>
 
-            {/* Delivery Slots */}
-            <div>
-              <h3 className="mb-3 font-display text-lg font-semibold">Select Delivery Slot</h3>
-              <div className="grid grid-cols-2 gap-3">
-                {deliverySlots.map((slot) => (
-                  <button
-                    key={slot.id}
-                    onClick={() => slot.available && setSelectedSlot(slot.id)}
-                    disabled={!slot.available}
-                    className={`rounded-xl border-2 p-3 text-sm font-medium transition-all ${
-                      selectedSlot === slot.id
-                        ? "border-primary bg-primary/10 text-primary"
-                        : slot.available
-                        ? "border-border bg-card text-foreground hover:border-primary/50"
-                        : "cursor-not-allowed border-border bg-muted text-muted-foreground"
-                    }`}
-                  >
-                    <Clock className="mx-auto mb-1 h-4 w-4" />
-                    {slot.time}
-                    {!slot.available && <span className="block text-xs">Unavailable</span>}
-                  </button>
-                ))}
+            {/* Expected Delivery */}
+            <div className="flex items-center gap-3 rounded-xl bg-fresh-green/10 px-4 py-3">
+              <Truck className="h-5 w-5 text-fresh-green" />
+              <div>
+                <p className="text-sm font-medium text-fresh-green">Expected Delivery</p>
+                <p className="text-lg font-bold text-foreground">10-15 minutes</p>
               </div>
             </div>
 

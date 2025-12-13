@@ -2,13 +2,23 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, Filter, Star, Clock, Plus, ShoppingCart, Flame, Percent } from "lucide-react";
+import { Search, Filter, Star, Clock, Plus, ShoppingCart, Flame, Percent, Truck } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import tomatoesImg from "@/assets/product-tomatoes.jpg";
 import spinachImg from "@/assets/product-spinach.jpg";
 
 const categories = ["All", "Vegetables", "Fruits", "Leafy Greens", "Organic", "Bestsellers", "Offers"];
+
+const filterOptions = [
+  { id: "eatables", label: "Eatables", icon: "🍽️" },
+  { id: "fruits", label: "Fruits", icon: "🍎" },
+  { id: "green-veggies", label: "Green Veggies", icon: "🥬" },
+  { id: "ground-harvested", label: "Ground Harvested", icon: "🥔" },
+  { id: "exotic", label: "Exotic", icon: "🥝" },
+  { id: "seasonal", label: "Seasonal", icon: "🌸" },
+  { id: "daily-essentials", label: "Daily Essentials", icon: "🧅" },
+];
 
 const products = [
   // VEGETABLES (prices reduced by 10%)
@@ -61,6 +71,16 @@ const products = [
 export default function Products() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [activeFilters, setActiveFilters] = useState<string[]>([]);
+  const [showFilters, setShowFilters] = useState(false);
+
+  const toggleFilter = (filterId: string) => {
+    setActiveFilters(prev => 
+      prev.includes(filterId) 
+        ? prev.filter(f => f !== filterId)
+        : [...prev, filterId]
+    );
+  };
 
   const filteredProducts = products.filter((product) => {
     const matchesCategory = 
@@ -89,22 +109,62 @@ export default function Products() {
           </p>
         </div>
 
+        {/* Expected Delivery Banner */}
+        <div className="mb-6 flex items-center gap-2 rounded-xl bg-fresh-green/10 px-4 py-3 text-fresh-green">
+          <Truck className="h-5 w-5" />
+          <span className="text-sm font-medium">Expected Delivery: 10-15 minutes</span>
+        </div>
+
         {/* Search & Filter */}
-        <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div className="mb-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div className="relative flex-1 md:max-w-md">
-            <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               placeholder="Search products..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10"
+              className="h-10 pl-9 text-sm"
             />
           </div>
-          <Button variant="outline" className="md:w-auto">
+          <Button 
+            variant={showFilters ? "default" : "outline"} 
+            className="md:w-auto"
+            onClick={() => setShowFilters(!showFilters)}
+          >
             <Filter className="h-4 w-4" />
-            Filters
+            Filters {activeFilters.length > 0 && `(${activeFilters.length})`}
           </Button>
         </div>
+
+        {/* Filter Options */}
+        {showFilters && (
+          <div className="mb-6 rounded-xl border border-border bg-card p-4">
+            <div className="flex flex-wrap gap-2">
+              {filterOptions.map((filter) => (
+                <button
+                  key={filter.id}
+                  onClick={() => toggleFilter(filter.id)}
+                  className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
+                    activeFilters.includes(filter.id)
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                  }`}
+                >
+                  <span>{filter.icon}</span>
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+            {activeFilters.length > 0 && (
+              <button 
+                onClick={() => setActiveFilters([])}
+                className="mt-3 text-xs text-muted-foreground hover:text-primary"
+              >
+                Clear all filters
+              </button>
+            )}
+          </div>
+        )}
 
         {/* Categories */}
         <div className="mb-8 flex flex-wrap gap-2">
@@ -176,58 +236,54 @@ export default function Products() {
         )}
 
         {/* Products Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {filteredProducts.map((product) => (
             <Link
               key={product.id}
               to={`/products/${product.id}`}
-              className="group overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:shadow-card"
+              className="group overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:shadow-card"
             >
-              <div className="relative aspect-square overflow-hidden">
+              <div className="relative aspect-[4/3] overflow-hidden">
                 <img
                   src={product.image}
                   alt={product.name}
                   className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute left-3 top-3 flex flex-col gap-1">
-                  <span className="freshness-badge">
-                    <Clock className="h-3 w-3" />
-                    {product.freshness}
-                  </span>
+                <div className="absolute left-2 top-2 flex flex-col gap-0.5">
                   {product.offer && (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-destructive px-2 py-0.5 text-xs font-medium text-destructive-foreground">
-                      <Percent className="h-3 w-3" /> {product.offer}% OFF
+                    <span className="inline-flex items-center gap-0.5 rounded-full bg-destructive px-1.5 py-0.5 text-[10px] font-medium text-destructive-foreground">
+                      <Percent className="h-2.5 w-2.5" /> {product.offer}%
                     </span>
                   )}
                   {product.isBestseller && (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-trust-gold px-2 py-0.5 text-xs font-medium text-foreground">
-                      <Flame className="h-3 w-3" /> Bestseller
+                    <span className="inline-flex items-center gap-0.5 rounded-full bg-trust-gold px-1.5 py-0.5 text-[10px] font-medium text-foreground">
+                      <Flame className="h-2.5 w-2.5" /> Best
                     </span>
                   )}
                 </div>
               </div>
-              <div className="p-4">
-                <div className="mb-2 flex items-center justify-between">
-                  <span className="vendor-badge">{product.vendor}</span>
-                  <div className="flex items-center gap-1">
-                    <Star className="h-4 w-4 fill-trust-gold text-trust-gold" />
-                    <span className="text-sm font-medium">{product.rating}</span>
+              <div className="p-2.5">
+                <div className="mb-1 flex items-center justify-between">
+                  <span className="text-[10px] text-muted-foreground truncate">{product.vendor}</span>
+                  <div className="flex items-center gap-0.5">
+                    <Star className="h-3 w-3 fill-trust-gold text-trust-gold" />
+                    <span className="text-[10px] font-medium">{product.rating}</span>
                   </div>
                 </div>
-                <h3 className="font-display text-lg font-semibold text-foreground">
+                <h3 className="font-medium text-sm text-foreground truncate">
                   {product.name}
                 </h3>
-                <div className="mt-3 flex items-center justify-between">
+                <div className="mt-1.5 flex items-center justify-between">
                   <div>
                     {product.offer ? (
-                      <div className="flex items-center gap-2">
-                        <p className="text-lg font-bold text-primary">
+                      <div className="flex items-center gap-1">
+                        <p className="text-sm font-bold text-primary">
                           ₹{Math.round(product.price * (1 - product.offer / 100))}
                         </p>
-                        <p className="text-sm text-muted-foreground line-through">₹{product.price}</p>
+                        <p className="text-[10px] text-muted-foreground line-through">₹{product.price}</p>
                       </div>
                     ) : (
-                      <p className="text-lg font-bold text-primary">₹{product.price}</p>
+                      <p className="text-sm font-bold text-primary">₹{product.price}</p>
                     )}
                     <span className="text-xs text-muted-foreground">per {product.unit}</span>
                   </div>
