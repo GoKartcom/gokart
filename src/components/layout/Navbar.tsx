@@ -1,8 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Menu, X, Leaf } from "lucide-react";
+import { ShoppingCart, Menu, X, Leaf, LogOut } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { useAuthContext } from "@/context/AuthContext";
 
 const navLinks = [
 	{ name: "Home", path: "/" },
@@ -20,6 +21,7 @@ const navLinks = [
 export function Navbar() {
 	const [isOpen, setIsOpen] = useState(false);
 	const location = useLocation();
+	const { isAuthenticated, user, logout } = useAuthContext();
 
 	return (
 		<header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur-md">
@@ -65,24 +67,47 @@ export function Navbar() {
 				</nav>
 
 				<div className="hidden items-center gap-3 md:flex">
-					<Link to="/cart">
-						<Button variant="ghost" size="icon" className="relative">
-							<ShoppingCart className="h-5 w-5" />
-							<span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-soft-orange text-xs font-bold text-primary-foreground">
-								2
-							</span>
-						</Button>
-					</Link>
-					<Link to="/login">
-						<Button variant="outline" size="sm">
-							Login
-						</Button>
-					</Link>
-					<Link to="/products">
-						<Button variant="hero" size="sm">
-							Shop Now
-						</Button>
-					</Link>
+					{isAuthenticated && user ? (
+						<>
+							<div className="flex items-center gap-2">
+								{user.picture && (
+									<img
+										src={user.picture}
+										alt={user.name}
+										className="h-8 w-8 rounded-full"
+									/>
+								)}
+								<span className="text-sm font-medium text-foreground">
+									{user.name}
+								</span>
+							</div>
+							<Button
+								variant="ghost"
+								size="sm"
+								onClick={logout}
+								className="gap-2"
+							>
+								<LogOut className="h-4 w-4" />
+								Logout
+							</Button>
+						</>
+					) : (
+						<>
+							<Link to="/cart">
+								<Button variant="ghost" size="icon" className="relative">
+									<ShoppingCart className="h-5 w-5" />
+									<span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-soft-orange text-xs font-bold text-primary-foreground">
+										2
+									</span>
+								</Button>
+							</Link>
+							<Link to="/login">
+								<Button variant="hero" size="sm">
+									Login
+								</Button>
+							</Link>
+						</>
+					)}
 				</div>
 
 				{/* Mobile Menu Button */}
@@ -126,8 +151,36 @@ export function Navbar() {
 								</Link>
 							);
 						})}
-						<div className="mt-4 flex flex-col gap-3">
-							<div className="flex items-center gap-3">
+						{isAuthenticated && user ? (
+							<>
+								<div className="my-2 border-t border-border pt-2">
+									<div className="flex items-center gap-2 px-4 py-2">
+										{user.picture && (
+											<img
+												src={user.picture}
+												alt={user.name}
+												className="h-8 w-8 rounded-full"
+											/>
+										)}
+										<span className="text-sm font-medium">
+											{user.name}
+										</span>
+									</div>
+								</div>
+								<Button
+									variant="outline"
+									className="w-full gap-2"
+									onClick={() => {
+										logout();
+										setIsOpen(false);
+									}}
+								>
+									<LogOut className="h-4 w-4" />
+									Logout
+								</Button>
+							</>
+						) : (
+							<div className="mt-4 flex items-center gap-3">
 								<Link to="/cart" className="flex-1">
 									<Button variant="outline" className="w-full">
 										<ShoppingCart className="h-4 w-4" />
@@ -135,17 +188,12 @@ export function Navbar() {
 									</Button>
 								</Link>
 								<Link to="/login" className="flex-1">
-									<Button variant="outline" className="w-full">
+									<Button variant="hero" className="w-full">
 										Login
 									</Button>
 								</Link>
 							</div>
-							<Link to="/products">
-								<Button variant="hero" className="w-full">
-									Shop Now
-								</Button>
-							</Link>
-						</div>
+						)}
 					</div>
 				</nav>
 			)}
