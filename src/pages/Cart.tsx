@@ -2,7 +2,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Minus, Plus, Trash2, Clock, ArrowRight, ShoppingBag } from "lucide-react";
+import { Minus, Plus, Trash2, ArrowRight, ShoppingBag, Truck } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import tomatoesImg from "@/assets/product-tomatoes.jpg";
@@ -29,15 +29,8 @@ const initialCartItems = [
   },
 ];
 
-const deliverySlots = [
-  { id: 1, date: "Today", time: "5:00 PM - 7:00 PM", fee: 0 },
-  { id: 2, date: "Tomorrow", time: "7:00 AM - 9:00 AM", fee: 0 },
-  { id: 3, date: "Tomorrow", time: "10:00 AM - 12:00 PM", fee: 0 },
-];
-
 export default function Cart() {
   const [cartItems, setCartItems] = useState(initialCartItems);
-  const [selectedSlot, setSelectedSlot] = useState<number | null>(1);
 
   const updateQuantity = (id: number, change: number) => {
     setCartItems((items) =>
@@ -144,34 +137,12 @@ export default function Cart() {
               ))}
             </div>
 
-            {/* Delivery Slots */}
-            <div className="mt-8">
-              <h2 className="mb-4 font-display text-xl font-semibold text-foreground">
-                Select Delivery Slot
-              </h2>
-              <div className="grid gap-3 sm:grid-cols-3">
-                {deliverySlots.map((slot) => (
-                  <button
-                    key={slot.id}
-                    onClick={() => setSelectedSlot(slot.id)}
-                    className={`rounded-xl border-2 p-4 text-left transition-all ${
-                      selectedSlot === slot.id
-                        ? "border-primary bg-primary/5"
-                        : "border-border bg-card hover:border-primary/50"
-                    }`}
-                  >
-                    <p className="font-semibold text-foreground">{slot.date}</p>
-                    <p className="flex items-center gap-1 text-sm text-muted-foreground">
-                      <Clock className="h-3 w-3" />
-                      {slot.time}
-                    </p>
-                    {slot.fee === 0 && (
-                      <span className="mt-2 inline-block rounded-full bg-fresh-green/10 px-2 py-0.5 text-xs font-medium text-fresh-green">
-                        Free Delivery
-                      </span>
-                    )}
-                  </button>
-                ))}
+            {/* Expected Delivery */}
+            <div className="mt-8 flex items-center gap-3 rounded-xl bg-fresh-green/10 px-4 py-4">
+              <Truck className="h-6 w-6 text-fresh-green" />
+              <div>
+                <p className="text-sm font-medium text-fresh-green">Expected Delivery</p>
+                <p className="text-lg font-bold text-foreground">10-15 minutes</p>
               </div>
             </div>
           </div>
