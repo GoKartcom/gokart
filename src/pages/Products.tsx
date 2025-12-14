@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Search, Filter, Star, Clock, Plus, ShoppingCart, Flame, Percent, Truck } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useCart } from "@/context/CartContext";
 import tomatoesImg from "@/assets/product-tomatoes.jpg";
 import spinachImg from "@/assets/product-spinach.jpg";
 
@@ -73,6 +74,7 @@ export default function Products() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
   const [showFilters, setShowFilters] = useState(false);
+  const { addToCart } = useCart();
 
   const toggleFilter = (filterId: string) => {
     setActiveFilters(prev => 
@@ -94,6 +96,21 @@ export default function Products() {
 
   const dealOfTheDay = products.find(p => p.offer && p.offer >= 25);
   const bestsellers = products.filter(p => p.isBestseller).slice(0, 4);
+
+  const handleAddToCart = (e: React.MouseEvent, product: typeof products[0]) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    addToCart({
+      productId: product.id,
+      name: product.name,
+      vendor: product.vendor,
+      price: product.price,
+      unit: product.unit,
+      image: product.image,
+      offer: product.offer,
+    });
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -202,7 +219,7 @@ export default function Products() {
                   <span className="text-lg text-muted-foreground line-through">₹{dealOfTheDay.price}</span>
                   <span className="text-sm text-muted-foreground">/{dealOfTheDay.unit}</span>
                 </div>
-                <Button className="mt-4" variant="fresh">
+                <Button className="mt-4" variant="fresh" onClick={(e) => handleAddToCart(e, dealOfTheDay)}>
                   <Plus className="h-4 w-4" /> Add to Cart
                 </Button>
               </div>
@@ -287,7 +304,7 @@ export default function Products() {
                     )}
                     <span className="text-xs text-muted-foreground">per {product.unit}</span>
                   </div>
-                  <Button size="sm" variant="fresh" onClick={(e) => e.preventDefault()}>
+                  <Button size="sm" variant="fresh" onClick={(e) => handleAddToCart(e, product)}>
                     <Plus className="h-4 w-4" />
                     Add
                   </Button>

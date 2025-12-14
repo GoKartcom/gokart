@@ -4,6 +4,7 @@ import { ShoppingCart, Menu, X, Leaf, LogOut } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useAuthContext } from "@/context/AuthContext";
+import { useCart } from "@/context/CartContext";
 
 const navLinks = [
 	{ name: "Home", path: "/" },
@@ -19,6 +20,7 @@ const navLinks = [
 ];
 
 export function Navbar() {
+	const { totalItems } = useCart();
 	const [isOpen, setIsOpen] = useState(false);
 	const location = useLocation();
 	const { isAuthenticated, user, logout } = useAuthContext();
@@ -67,6 +69,19 @@ export function Navbar() {
 				</nav>
 
 				<div className="hidden items-center gap-3 md:flex">
+					{/* Cart - Always visible */}
+					<Link to="/cart" className="relative">
+						<Button variant="ghost" size="sm" className="gap-2">
+							<ShoppingCart className="h-5 w-5" />
+							{totalItems > 0 && (
+								<span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
+									{totalItems}
+								</span>
+							)}
+						</Button>
+					</Link>
+
+					{/* Auth Section */}
 					{isAuthenticated && user ? (
 						<>
 							<div className="flex items-center gap-2">
@@ -92,21 +107,11 @@ export function Navbar() {
 							</Button>
 						</>
 					) : (
-						<>
-							<Link to="/cart">
-								<Button variant="ghost" size="icon" className="relative">
-									<ShoppingCart className="h-5 w-5" />
-									<span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-soft-orange text-xs font-bold text-primary-foreground">
-										2
-									</span>
-								</Button>
-							</Link>
-							<Link to="/login">
-								<Button variant="hero" size="sm">
-									Login
-								</Button>
-							</Link>
-						</>
+						<Link to="/login">
+							<Button variant="hero" size="sm">
+								Login
+							</Button>
+						</Link>
 					)}
 				</div>
 
@@ -151,6 +156,16 @@ export function Navbar() {
 								</Link>
 							);
 						})}
+
+						{/* Cart Button - Mobile */}
+						<Link to="/cart" onClick={() => setIsOpen(false)}>
+							<Button variant="outline" className="w-full mt-2">
+								<ShoppingCart className="h-4 w-4 mr-2" />
+								Cart {totalItems > 0 && `(${totalItems})`}
+							</Button>
+						</Link>
+
+						{/* Auth Section - Mobile */}
 						{isAuthenticated && user ? (
 							<>
 								<div className="my-2 border-t border-border pt-2">
@@ -180,19 +195,11 @@ export function Navbar() {
 								</Button>
 							</>
 						) : (
-							<div className="mt-4 flex items-center gap-3">
-								<Link to="/cart" className="flex-1">
-									<Button variant="outline" className="w-full">
-										<ShoppingCart className="h-4 w-4" />
-										Cart (2)
-									</Button>
-								</Link>
-								<Link to="/login" className="flex-1">
-									<Button variant="hero" className="w-full">
-										Login
-									</Button>
-								</Link>
-							</div>
+							<Link to="/login" onClick={() => setIsOpen(false)}>
+								<Button variant="hero" className="w-full mt-2">
+									Login
+								</Button>
+							</Link>
 						)}
 					</div>
 				</nav>
