@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/context/AuthContext";
 import { CartProvider } from "@/context/CartContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
+import { LocationProvider } from "@/context/LocationContext";
 import Index from "./pages/Index";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
@@ -18,6 +19,8 @@ import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Checkout from "./pages/Checkout";
 import OrderSuccess from "./pages/OrderSuccess";
+import Orders from "./pages/Orders";
+import Profile from "./pages/Profile";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +29,7 @@ const App = () => (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <AuthProvider>
+          <LocationProvider>
           <CartProvider>
           <Toaster />
           <Sonner />
@@ -56,8 +60,25 @@ const App = () => (
               }
             />
             <Route path="/order-success/:orderId" element={<OrderSuccess />} />
+            <Route
+              path="/orders"
+              element={
+                <ProtectedRoute>
+                  <Orders />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
           </CartProvider>
+          </LocationProvider>
         </AuthProvider>
       </TooltipProvider>
     </QueryClientProvider>

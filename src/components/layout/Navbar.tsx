@@ -1,10 +1,28 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Menu, X, Leaf, LogOut } from "lucide-react";
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuLabel,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+	ShoppingCart,
+	Menu,
+	X,
+	Leaf,
+	LogOut,
+	User,
+	Package,
+	ChevronDown,
+} from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useAuthContext } from "@/context/AuthContext";
 import { useCart } from "@/context/CartContext";
+import { LocationSelector } from "@/components/LocationSelector";
 
 const navLinks = [
 	{ name: "Home", path: "/" },
@@ -36,6 +54,8 @@ export function Navbar() {
 						Klickit
 					</span>
 				</Link>
+
+				<LocationSelector/>
 
 				{/* Desktop Navigation */}
 				<nav className="hidden items-center gap-1 md:flex">
@@ -83,29 +103,45 @@ export function Navbar() {
 
 					{/* Auth Section */}
 					{isAuthenticated && user ? (
-						<>
-							<div className="flex items-center gap-2">
-								{user.picture && (
-									<img
-										src={user.picture}
-										alt={user.name}
-										className="h-8 w-8 rounded-full"
-									/>
-								)}
-								<span className="text-sm font-medium text-foreground">
-									{user.name}
-								</span>
-							</div>
-							<Button
-								variant="ghost"
-								size="sm"
-								onClick={logout}
-								className="gap-2"
-							>
-								<LogOut className="h-4 w-4" />
-								Logout
-							</Button>
-						</>
+						<DropdownMenu>
+							<DropdownMenuTrigger asChild>
+								<Button variant="ghost" className="gap-2">
+									{user.picture && (
+										<img
+											src={user.picture}
+											alt={user.name}
+											className="h-7 w-7 rounded-full"
+										/>
+									)}
+									<span className="text-sm font-medium">{user.name}</span>
+									<ChevronDown className="h-4 w-4" />
+								</Button>
+							</DropdownMenuTrigger>
+							<DropdownMenuContent align="end" className="w-56">
+								<DropdownMenuLabel>My Account</DropdownMenuLabel>
+								<DropdownMenuSeparator />
+								<DropdownMenuItem asChild>
+									<Link to="/orders" className="cursor-pointer">
+										<Package className="mr-2 h-4 w-4" />
+										Your Orders
+									</Link>
+								</DropdownMenuItem>
+								<DropdownMenuItem asChild>
+									<Link to="/profile" className="cursor-pointer">
+										<User className="mr-2 h-4 w-4" />
+										Profile
+									</Link>
+								</DropdownMenuItem>
+								<DropdownMenuSeparator />
+								<DropdownMenuItem
+									onClick={logout}
+									className="cursor-pointer text-destructive"
+								>
+									<LogOut className="mr-2 h-4 w-4" />
+									Logout
+								</DropdownMenuItem>
+							</DropdownMenuContent>
+						</DropdownMenu>
 					) : (
 						<Link to="/login">
 							<Button variant="hero" size="sm">
@@ -182,9 +218,21 @@ export function Navbar() {
 										</span>
 									</div>
 								</div>
+								<Link to="/orders" onClick={() => setIsOpen(false)}>
+									<Button variant="outline" className="w-full gap-2">
+										<Package className="h-4 w-4" />
+										Your Orders
+									</Button>
+								</Link>
+								<Link to="/profile" onClick={() => setIsOpen(false)}>
+									<Button variant="outline" className="w-full gap-2">
+										<User className="h-4 w-4" />
+										Profile
+									</Button>
+								</Link>
 								<Button
 									variant="outline"
-									className="w-full gap-2"
+									className="w-full gap-2 text-destructive"
 									onClick={() => {
 										logout();
 										setIsOpen(false);
