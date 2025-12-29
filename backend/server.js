@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:8080', 'http://localhost:5173', 'http://localhost:3000', 'http://127.0.0.1:8080', "https://klickit.vercel.app"],
+  origin: ['http://localhost:8080', 'http://localhost:5173', 'http://localhost:3000', 'http://127.0.0.1:8080', "https://klickit.vercel.app", "http://localhost:8081"],
   credentials: true
 }));
 app.use(express.json());
