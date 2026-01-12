@@ -7,7 +7,7 @@ import { AuthProvider } from "@/context/AuthContext";
 import { CartProvider } from "@/context/CartContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { LocationProvider } from "@/context/LocationContext";
-import Home from "./pages/Home";
+import Index from "./pages/Index";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
 import About from "./pages/About";
@@ -15,7 +15,7 @@ import Vendor from "./pages/Vendor";
 import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
 import RefundPolicy from "./pages/RefundPolicy";
-import Register from "./pages/Register";
+import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Checkout from "./pages/Checkout";
 import OrderSuccess from "./pages/OrderSuccess";
@@ -34,8 +34,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/" element={<Index />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/:id" element={<ProductDetail />} />
             <Route path="/about" element={<About />} />
@@ -50,6 +49,7 @@ const App = () => (
               }
             />
             <Route path="/refund-policy" element={<RefundPolicy />} />
+            <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound />} />
             <Route
               path="/checkout"
