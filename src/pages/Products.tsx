@@ -219,7 +219,7 @@ export default function Products() {
                   <span className="text-lg text-muted-foreground line-through">₹{dealOfTheDay.price}</span>
                   <span className="text-sm text-muted-foreground">/{dealOfTheDay.unit}</span>
                 </div>
-                <Button className="mt-4" variant="fresh" onClick={(e) => handleAddToCart(e, dealOfTheDay)}>
+                <Button className="mt-4" onClick={(e) => handleAddToCart(e, dealOfTheDay)}>
                   <Plus className="h-4 w-4" /> Add to Cart
                 </Button>
               </div>
@@ -304,7 +304,7 @@ export default function Products() {
                     )}
                     <span className="text-xs text-muted-foreground">per {product.unit}</span>
                   </div>
-                  <Button size="sm" variant="fresh" onClick={(e) => handleAddToCart(e, product)}>
+                  <Button size="sm" onClick={(e) => handleAddToCart(e, product)}>
                     <Plus className="h-4 w-4" />
                     Add
                   </Button>

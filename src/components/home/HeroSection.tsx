@@ -27,13 +27,13 @@ export function HeroSection() {
 
             <div className="flex flex-col gap-4 sm:flex-row">
               <Link to="/products">
-                <Button variant="hero" size="xl">
+                <Button size="lg">
                   Start Shopping
                   <ArrowRight className="h-5 w-5" />
                 </Button>
               </Link>
               <Link to="https://klickit-merchant.vercel.app/">
-                <Button variant="hero-outline" size="xl">
+                <Button variant="outline" size="lg">
                   Become a Vendor
                 </Button>
               </Link>

@@ -159,7 +159,7 @@ export default function Contact() {
                       rows={5}
                     />
                   </div>
-                  <Button type="submit" variant="hero" className="w-full">
+                  <Button type="submit" className="w-full">
                     Send Message
                   </Button>
                 </form>
