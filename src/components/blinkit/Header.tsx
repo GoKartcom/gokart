@@ -10,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import klickitLogo from "@/assets/klickit-logo.png";
 
 export function Header() {
   const { totalItems } = useCart();
@@ -20,11 +21,8 @@ export function Header() {
       <div className="container mx-auto">
         <div className="flex items-center justify-between h-16 gap-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 shrink-0">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl">K</span>
-            </div>
-            <span className="text-xl font-bold text-foreground hidden sm:block">Klickit</span>
+          <Link to="/" className="flex items-center shrink-0">
+            <img src={klickitLogo} alt="Klickit" className="h-12 w-auto" />
           </Link>
 
           {/* Location Selector */}
