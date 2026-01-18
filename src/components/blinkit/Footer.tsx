@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail } from "lucide-react";
+import klickitLogo from "@/assets/klickit-logo.png";
 
 export function BlinkitFooter() {
   return (
@@ -8,12 +9,7 @@ export function BlinkitFooter() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">K</span>
-              </div>
-              <span className="text-xl font-bold">Klickit</span>
-            </div>
+            <img src={klickitLogo} alt="Klickit" className="h-16 w-auto brightness-0 invert" />
             <p className="text-sm text-background/70">
               Fresh groceries delivered in minutes. Shop from local vendors and get the freshest produce at your doorstep.
             </p>
