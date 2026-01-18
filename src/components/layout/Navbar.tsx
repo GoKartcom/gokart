@@ -144,7 +144,7 @@ export function Navbar() {
 						</DropdownMenu>
 					) : (
 						<Link to="/login">
-							<Button variant="hero" size="sm">
+							<Button size="sm">
 								Login
 							</Button>
 						</Link>
@@ -244,7 +244,7 @@ export function Navbar() {
 							</>
 						) : (
 							<Link to="/login" onClick={() => setIsOpen(false)}>
-								<Button variant="hero" className="w-full mt-2">
+								<Button className="w-full mt-2">
 									Login
 								</Button>
 							</Link>

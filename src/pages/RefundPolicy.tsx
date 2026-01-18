@@ -146,7 +146,7 @@ export default function RefundPolicy() {
                   placeholder="Enter Order ID"
                   className="flex-1 rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                 />
-                <Button variant="hero">Track Status</Button>
+                <Button>Track Status</Button>
               </div>
             </div>
           </div>

@@ -142,7 +142,7 @@ export default function ProductDetail() {
 
             {/* Actions */}
             <div className="flex gap-3">
-              <Button variant="hero" size="xl" className="flex-1">
+              <Button size="lg" className="flex-1">
                 Add to Cart — ₹{product.price * quantity}
               </Button>
             </div>
