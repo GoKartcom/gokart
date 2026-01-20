@@ -249,7 +249,7 @@ export default function Vendor() {
                     rows={3}
                   />
                 </div>
-                <Button type="submit" variant="hero" size="xl" className="w-full">
+                <Button type="submit" size="lg" className="w-full">
                   Submit Application
                   <ArrowRight className="h-5 w-5" />
                 </Button>

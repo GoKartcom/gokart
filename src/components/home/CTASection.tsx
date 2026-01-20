@@ -25,7 +25,7 @@ export function CTASection() {
               </div>
 
               <div className="flex flex-col gap-4 sm:flex-row lg:justify-end">
-                <Link to="/products">
+                <Link to="/shop">
                   <Button
                     size="xl"
                     className="w-full bg-primary-foreground text-primary hover:bg-primary-foreground/90 sm:w-auto"
