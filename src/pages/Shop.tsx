@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Header } from "@/components/blinkit/Header";
 import { CategoryStrip } from "@/components/blinkit/CategoryStrip";
 import { HeroBanner } from "@/components/blinkit/HeroBanner";
@@ -157,17 +157,33 @@ const dealOfTheDay = [
 
 const Shop = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  
+  // Refs for each category section
+  const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   const handleCategorySelect = (categoryId: string) => {
     setSelectedCategory(categoryId);
+    
+    // Scroll to the selected category section
+    if (categoryId && sectionRefs.current[categoryId]) {
+      sectionRefs.current[categoryId]?.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+    }
   };
 
-  const getProductsForCategory = () => {
-    if (!selectedCategory) return null;
-    return categoryProducts[selectedCategory as keyof typeof categoryProducts] || null;
-  };
-
-  const selectedProducts = getProductsForCategory();
+  // Scroll to section when category changes
+  useEffect(() => {
+    if (selectedCategory && sectionRefs.current[selectedCategory]) {
+      setTimeout(() => {
+        sectionRefs.current[selectedCategory]?.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        });
+      }, 100);
+    }
+  }, [selectedCategory]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -176,20 +192,50 @@ const Shop = () => {
       <main>
         <HeroBanner />
         
-        {selectedCategory && selectedProducts ? (
-          <ProductSection 
-            title={getCategoryTitle(selectedCategory)} 
-            products={selectedProducts} 
-          />
-        ) : (
-          <>
-            <ProductSection title="🔥 Deal of the Day" products={dealOfTheDay} />
-            <ProductSection title="🥛 Dairy & Breakfast" products={categoryProducts["dairy-breakfast"]} />
-            <ProductSection title="🥬 Fresh Vegetables" products={categoryProducts["fruits-vegetables"].slice(0, 6)} />
-            <ProductSection title="🍎 Fresh Fruits" products={categoryProducts["fruits-vegetables"].slice(6)} />
-            <ProductSection title="🍿 Snacks & Munchies" products={categoryProducts["snacks-munchies"]} />
-          </>
-        )}
+        {/* Deal of the Day - Always visible at top */}
+        <ProductSection title="🔥 Deal of the Day" products={dealOfTheDay} />
+        
+        {/* All Category Sections */}
+        <div ref={(el) => sectionRefs.current["dairy-breakfast"] = el} id="dairy-breakfast">
+          <ProductSection title="🥛 Dairy & Breakfast" products={categoryProducts["dairy-breakfast"]} />
+        </div>
+        
+        <div ref={(el) => sectionRefs.current["fruits-vegetables"] = el} id="fruits-vegetables">
+          <ProductSection title="🥬 Fresh Vegetables" products={categoryProducts["fruits-vegetables"].slice(0, 6)} />
+          <ProductSection title="🍎 Fresh Fruits" products={categoryProducts["fruits-vegetables"].slice(6)} />
+        </div>
+        
+        <div ref={(el) => sectionRefs.current["snacks-munchies"] = el} id="snacks-munchies">
+          <ProductSection title="🍿 Snacks & Munchies" products={categoryProducts["snacks-munchies"]} />
+        </div>
+        
+        <div ref={(el) => sectionRefs.current["cold-drinks-juices"] = el} id="cold-drinks-juices">
+          <ProductSection title="🧃 Cold Drinks & Juices" products={categoryProducts["cold-drinks-juices"]} />
+        </div>
+        
+        <div ref={(el) => sectionRefs.current["instant-frozen"] = el} id="instant-frozen">
+          <ProductSection title="🍜 Instant & Frozen" products={categoryProducts["instant-frozen"]} />
+        </div>
+        
+        <div ref={(el) => sectionRefs.current["tea-coffee"] = el} id="tea-coffee">
+          <ProductSection title="☕ Tea, Coffee & More" products={categoryProducts["tea-coffee"]} />
+        </div>
+        
+        <div ref={(el) => sectionRefs.current["bakery-biscuits"] = el} id="bakery-biscuits">
+          <ProductSection title="🍪 Bakery & Biscuits" products={categoryProducts["bakery-biscuits"]} />
+        </div>
+        
+        <div ref={(el) => sectionRefs.current["sweet-tooth"] = el} id="sweet-tooth">
+          <ProductSection title="🍫 Sweet Tooth" products={categoryProducts["sweet-tooth"]} />
+        </div>
+        
+        <div ref={(el) => sectionRefs.current["atta-rice-dal"] = el} id="atta-rice-dal">
+          <ProductSection title="🍚 Atta, Rice & Dal" products={categoryProducts["atta-rice-dal"]} />
+        </div>
+        
+        <div ref={(el) => sectionRefs.current["dryfruits-masala"] = el} id="dryfruits-masala">
+          <ProductSection title="🥜 Dry Fruits & Masala" products={categoryProducts["dryfruits-masala"]} />
+        </div>
       </main>
       <BlinkitFooter />
     </div>
