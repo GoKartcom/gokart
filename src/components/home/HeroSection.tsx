@@ -26,7 +26,7 @@ export function HeroSection() {
             </p>
 
             <div className="flex flex-col gap-4 sm:flex-row">
-              <Link to="/products">
+              <Link to="/shop">
                 <Button size="lg">
                   Start Shopping
                   <ArrowRight className="h-5 w-5" />

@@ -8,6 +8,7 @@ import { CartProvider } from "@/context/CartContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { LocationProvider } from "@/context/LocationContext";
 import Index from "./pages/Index";
+import Shop from "./pages/Shop";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
 import About from "./pages/About";
@@ -35,6 +36,7 @@ const App = () => (
           <Sonner />
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/shop" element={<Shop />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/:id" element={<ProductDetail />} />
             <Route path="/about" element={<About />} />

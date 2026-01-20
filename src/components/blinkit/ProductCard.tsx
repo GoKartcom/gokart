@@ -67,7 +67,7 @@ export function ProductCard({
       )}
 
       {/* Image */}
-      <div className="relative aspect-square mb-3 rounded-lg overflow-hidden bg-secondary">
+      <div className="relative aspect-[4/3] mb-3 rounded-lg overflow-hidden bg-secondary">
         <img
           src={image}
           alt={name}
