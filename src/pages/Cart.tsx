@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Minus, Plus, Trash2, ArrowRight, ShoppingBag, Truck } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useCart } from "@/context/CartContext";
+import { BackButton } from "@/components/BackButton";
 
 export default function Cart() {
   const { items, updateQuantity, removeFromCart, subtotal } = useCart();
@@ -41,6 +42,7 @@ export default function Cart() {
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="container mx-auto px-4 py-8">
+        <BackButton label="Back" className="mb-4" />
         <h1 className="font-display text-3xl font-bold text-foreground mb-8">
           Shopping Cart
         </h1>

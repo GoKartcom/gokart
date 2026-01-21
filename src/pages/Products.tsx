@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useCart } from "@/context/CartContext";
 import tomatoesImg from "@/assets/product-tomatoes.jpg";
 import spinachImg from "@/assets/product-spinach.jpg";
+import { BackButton } from "@/components/BackButton";
 
 const categories = ["All", "Vegetables", "Fruits", "Leafy Greens", "Organic", "Bestsellers", "Offers"];
 
@@ -116,6 +117,9 @@ export default function Products() {
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="container mx-auto px-4 py-8">
+        {/* Back Button */}
+        <BackButton label="Back" className="mb-4" />
+        
         {/* Header */}
         <div className="mb-8">
           <h1 className="font-display text-3xl font-bold text-foreground md:text-4xl">

@@ -19,6 +19,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { BackButton } from "@/components/BackButton";
 
 const faqs = [
   {
@@ -67,13 +68,16 @@ export default function Contact() {
       <main>
         {/* Hero */}
         <section className="gradient-hero py-16">
-          <div className="container mx-auto px-4 text-center">
-            <h1 className="font-display text-4xl font-bold text-foreground md:text-5xl">
-              Get in Touch
-            </h1>
-            <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
-              Have questions? We're here to help. Reach out to us anytime.
-            </p>
+          <div className="container mx-auto px-4">
+            <BackButton label="Back" className="mb-4" />
+            <div className="text-center">
+              <h1 className="font-display text-4xl font-bold text-foreground md:text-5xl">
+                Get in Touch
+              </h1>
+              <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
+                Have questions? We're here to help. Reach out to us anytime.
+              </p>
+            </div>
           </div>
         </section>
 

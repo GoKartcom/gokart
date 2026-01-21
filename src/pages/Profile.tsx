@@ -3,6 +3,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useAuthContext } from "@/context/AuthContext";
 import { User, Phone, Mail } from "lucide-react";
+import { BackButton } from "@/components/BackButton";
 
 export default function Profile() {
   const { user } = useAuthContext();
@@ -11,6 +12,7 @@ export default function Profile() {
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="container mx-auto px-4 py-8">
+        <BackButton label="Back" className="mb-4" />
         <h1 className="font-display text-3xl font-bold text-foreground mb-8">
           My Profile
         </h1>

@@ -71,7 +71,7 @@ export function HeroBanner() {
           {banners.map((banner) => (
             <div
               key={banner.id}
-              className="w-full flex-shrink-0 relative h-[200px] md:h-[300px] lg:h-[350px]"
+              className="w-full flex-shrink-0 relative h-[160px] sm:h-[200px] md:h-[300px] lg:h-[350px]"
             >
               {/* Background Image */}
               <img

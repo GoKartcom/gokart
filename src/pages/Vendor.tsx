@@ -15,6 +15,7 @@ import {
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import vendor2 from "@/assets/vendor-2.jpg";
+import { BackButton } from "@/components/BackButton";
 
 const benefits = [
   {
@@ -72,6 +73,7 @@ export default function Vendor() {
         {/* Hero */}
         <section className="gradient-hero py-20">
           <div className="container mx-auto px-4">
+            <BackButton label="Back" className="mb-4" />
             <div className="grid items-center gap-12 lg:grid-cols-2">
               <div className="space-y-6">
                 <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2">
