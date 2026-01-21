@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Leaf, Users, TrendingUp, Heart } from "lucide-react";
 import vendor1 from "@/assets/vendor-1.jpg";
 import vendor2 from "@/assets/vendor-2.jpg";
+import { BackButton } from "@/components/BackButton";
 
 const stats = [
   { value: "500+", label: "Local Vendors" },
@@ -41,17 +42,20 @@ export default function About() {
       <main>
         {/* Hero */}
         <section className="gradient-hero py-20">
-          <div className="container mx-auto px-4 text-center">
-            <span className="text-sm font-semibold uppercase tracking-wider text-primary">
-              Our Story
-            </span>
-            <h1 className="mt-4 font-display text-4xl font-bold text-foreground md:text-5xl">
-              Bringing Fresh Produce<br />From Farm to Family
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Klickit was born from a simple belief: everyone deserves access to truly fresh, 
-              locally-sourced produce while supporting the vendors in their community.
-            </p>
+          <div className="container mx-auto px-4">
+            <BackButton label="Back" className="mb-4" />
+            <div className="text-center">
+              <span className="text-sm font-semibold uppercase tracking-wider text-primary">
+                Our Story
+              </span>
+              <h1 className="mt-4 font-display text-4xl font-bold text-foreground md:text-5xl">
+                Bringing Fresh Produce<br />From Farm to Family
+              </h1>
+              <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+                Klickit was born from a simple belief: everyone deserves access to truly fresh, 
+                locally-sourced produce while supporting the vendors in their community.
+              </p>
+            </div>
           </div>
         </section>
 
