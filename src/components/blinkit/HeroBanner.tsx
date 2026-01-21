@@ -3,33 +3,48 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
+// Banner images
+import bannerFruits from "@/assets/banners/banner-fruits.jpg";
+import bannerVegetables from "@/assets/banners/banner-vegetables.jpg";
+import bannerDairy from "@/assets/banners/banner-dairy.jpg";
+import bannerSnacks from "@/assets/banners/banner-snacks.jpg";
+
 const banners = [
   {
     id: 1,
     title: "Fresh Fruits",
     subtitle: "Up to 40% off",
-    description: "Farm fresh fruits delivered to your door",
-    bg: "from-orange-100 to-orange-50",
-    textColor: "text-orange-900",
-    icon: "🍎",
+    description: "Farm fresh fruits delivered to your door in minutes",
+    image: bannerFruits,
+    link: "/category/fruits-vegetables",
+    overlayColor: "from-orange-900/70 via-orange-900/40 to-transparent",
   },
   {
     id: 2,
-    title: "Daily Essentials",
+    title: "Farm Fresh Vegetables",
     subtitle: "Flat ₹50 off",
-    description: "On orders above ₹500",
-    bg: "from-green-100 to-green-50",
-    textColor: "text-green-900",
-    icon: "🥬",
+    description: "Organic vegetables straight from the farm",
+    image: bannerVegetables,
+    link: "/category/fruits-vegetables",
+    overlayColor: "from-green-900/70 via-green-900/40 to-transparent",
   },
   {
     id: 3,
-    title: "Dairy Products",
+    title: "Dairy & Breakfast",
     subtitle: "Buy 2 Get 1 Free",
-    description: "Fresh milk, curd & more",
-    bg: "from-blue-100 to-blue-50",
-    textColor: "text-blue-900",
-    icon: "🥛",
+    description: "Fresh milk, paneer, eggs & more",
+    image: bannerDairy,
+    link: "/category/dairy-breakfast",
+    overlayColor: "from-blue-900/70 via-blue-900/40 to-transparent",
+  },
+  {
+    id: 4,
+    title: "Snacks & Munchies",
+    subtitle: "Upto 30% off",
+    description: "Chips, namkeen, biscuits for every craving",
+    image: bannerSnacks,
+    link: "/category/snacks-munchies",
+    overlayColor: "from-purple-900/70 via-purple-900/40 to-transparent",
   },
 ];
 
@@ -56,24 +71,36 @@ export function HeroBanner() {
           {banners.map((banner) => (
             <div
               key={banner.id}
-              className={`w-full flex-shrink-0 bg-gradient-to-r ${banner.bg} p-8 md:p-12`}
+              className="w-full flex-shrink-0 relative h-[200px] md:h-[300px] lg:h-[350px]"
             >
-              <div className="flex items-center justify-between">
-                <div className="space-y-3">
-                  <span className="inline-block bg-primary/10 text-primary text-sm font-semibold px-3 py-1 rounded-full">
+              {/* Background Image */}
+              <img
+                src={banner.image}
+                alt={banner.title}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              
+              {/* Gradient Overlay */}
+              <div className={`absolute inset-0 bg-gradient-to-r ${banner.overlayColor}`} />
+              
+              {/* Content */}
+              <div className="relative z-10 h-full flex items-center p-6 md:p-10 lg:p-12">
+                <div className="space-y-2 md:space-y-3 max-w-md">
+                  <span className="inline-block bg-primary text-primary-foreground text-xs md:text-sm font-semibold px-3 py-1 rounded-full">
                     {banner.subtitle}
                   </span>
-                  <h2 className={`text-3xl md:text-4xl font-bold ${banner.textColor}`}>
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white drop-shadow-lg">
                     {banner.title}
                   </h2>
-                  <p className={`${banner.textColor} opacity-80`}>{banner.description}</p>
-                  <Link to="/products">
-                    <Button className="mt-2 bg-primary hover:bg-accent text-primary-foreground">
+                  <p className="text-white/90 text-sm md:text-base drop-shadow">
+                    {banner.description}
+                  </p>
+                  <Link to={banner.link}>
+                    <Button className="mt-2 bg-primary hover:bg-accent text-primary-foreground shadow-lg">
                       Shop Now
                     </Button>
                   </Link>
                 </div>
-                <div className="text-8xl md:text-9xl hidden sm:block">{banner.icon}</div>
               </div>
             </div>
           ))}
@@ -82,13 +109,13 @@ export function HeroBanner() {
         {/* Navigation */}
         <button
           onClick={prev}
-          className="absolute left-2 top-1/2 -translate-y-1/2 bg-card/80 hover:bg-card rounded-full p-2 shadow-md"
+          className="absolute left-2 top-1/2 -translate-y-1/2 bg-card/80 hover:bg-card rounded-full p-2 shadow-md transition-all"
         >
           <ChevronLeft className="h-5 w-5" />
         </button>
         <button
           onClick={next}
-          className="absolute right-2 top-1/2 -translate-y-1/2 bg-card/80 hover:bg-card rounded-full p-2 shadow-md"
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-card/80 hover:bg-card rounded-full p-2 shadow-md transition-all"
         >
           <ChevronRight className="h-5 w-5" />
         </button>
@@ -100,7 +127,7 @@ export function HeroBanner() {
               key={i}
               onClick={() => setCurrent(i)}
               className={`w-2 h-2 rounded-full transition-all ${
-                i === current ? "w-6 bg-primary" : "bg-foreground/30"
+                i === current ? "w-6 bg-primary" : "bg-white/50"
               }`}
             />
           ))}
