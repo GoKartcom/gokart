@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import dairyMilk from "@/assets/products/dairy-milk.jpg";
 import vegTomatoes from "@/assets/products/veg-tomatoes.jpg";
 import snackChips from "@/assets/products/snack-chips.jpg";
@@ -28,9 +29,14 @@ const categories = [
 ];
 
 export function CategoryStrip({ onCategorySelect, selectedCategory }: CategoryStripProps) {
+  const navigate = useNavigate();
+
   const handleCategoryClick = (categoryId: string) => {
     if (onCategorySelect) {
       onCategorySelect(categoryId === selectedCategory ? "" : categoryId);
+    } else {
+      // Navigate to category page if no handler provided
+      navigate(`/category/${categoryId}`);
     }
   };
 

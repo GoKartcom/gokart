@@ -1,6 +1,7 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { Header } from "@/components/blinkit/Header";
+import { CategoryStrip } from "@/components/blinkit/CategoryStrip";
 import { ProductSection } from "@/components/blinkit/ProductSection";
 import { BlinkitFooter } from "@/components/blinkit/Footer";
 import { Button } from "@/components/ui/button";
@@ -246,6 +247,7 @@ const Category = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
+      <CategoryStrip selectedCategory={categoryId} />
       
       {/* Back Button & Category Header */}
       <div className="bg-card border-b border-border">
