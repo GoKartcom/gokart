@@ -69,7 +69,7 @@ export default function Contact() {
         {/* Hero */}
         <section className="gradient-hero py-16">
           <div className="container mx-auto px-4">
-            <BackButton label="Back" className="mb-4" />
+            <BackButton className="mb-4" />
             <div className="text-center">
               <h1 className="font-display text-4xl font-bold text-foreground md:text-5xl">
                 Get in Touch

@@ -4,11 +4,10 @@ import { Button } from "@/components/ui/button";
 
 interface BackButtonProps {
   to?: string;
-  label?: string;
   className?: string;
 }
 
-export function BackButton({ to, label = "Back", className = "" }: BackButtonProps) {
+export function BackButton({ to, className = "" }: BackButtonProps) {
   const navigate = useNavigate();
 
   const handleBack = () => {
@@ -22,11 +21,11 @@ export function BackButton({ to, label = "Back", className = "" }: BackButtonPro
   return (
     <Button
       variant="ghost"
+      size="icon"
       onClick={handleBack}
-      className={`gap-2 ${className}`}
+      className={className}
     >
-      <ArrowLeft className="h-4 w-4" />
-      {label}
+      <ArrowLeft className="h-5 w-5" />
     </Button>
   );
 }

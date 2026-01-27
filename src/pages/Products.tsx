@@ -118,7 +118,7 @@ export default function Products() {
       <Navbar />
       <main className="container mx-auto px-4 py-8">
         {/* Back Button */}
-        <BackButton label="Back" className="mb-4" />
+        <BackButton className="mb-4" />
         
         {/* Header */}
         <div className="mb-8">

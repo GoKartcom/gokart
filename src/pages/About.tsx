@@ -43,7 +43,7 @@ export default function About() {
         {/* Hero */}
         <section className="gradient-hero py-20">
           <div className="container mx-auto px-4">
-            <BackButton label="Back" className="mb-4" />
+            <BackButton className="mb-4" />
             <div className="text-center">
               <span className="text-sm font-semibold uppercase tracking-wider text-primary">
                 Our Story
