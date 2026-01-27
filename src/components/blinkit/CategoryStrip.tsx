@@ -41,18 +41,18 @@ export function CategoryStrip({ onCategorySelect, selectedCategory }: CategorySt
   };
 
   return (
-    <div className="bg-card border-b border-border py-4">
-      <div className="container mx-auto">
-        <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+    <div className="bg-card border-b border-border py-2">
+      <div className="container mx-auto px-2">
+        <div className="flex gap-1 overflow-x-auto pb-1 scrollbar-hide">
           {categories.map((category) => (
             <button
               key={category.id}
               onClick={() => handleCategoryClick(category.id)}
-              className={`flex flex-col items-center gap-2 min-w-[80px] group transition-all ${
+              className={`flex flex-col items-center gap-1 min-w-[56px] md:min-w-[64px] group transition-all ${
                 selectedCategory === category.id ? "scale-105" : ""
               }`}
             >
-              <div className={`w-16 h-16 rounded-2xl overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform border-2 ${
+              <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform border-2 ${
                 selectedCategory === category.id 
                   ? "border-primary shadow-md" 
                   : "border-transparent"
@@ -63,7 +63,7 @@ export function CategoryStrip({ onCategorySelect, selectedCategory }: CategorySt
                   className="w-full h-full object-cover"
                 />
               </div>
-              <span className={`text-xs text-center font-medium line-clamp-2 max-w-[80px] ${
+              <span className={`text-[10px] md:text-xs text-center font-medium line-clamp-1 max-w-[56px] md:max-w-[64px] ${
                 selectedCategory === category.id 
                   ? "text-primary font-semibold" 
                   : "text-foreground"
