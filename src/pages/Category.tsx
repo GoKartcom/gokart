@@ -252,11 +252,11 @@ const Category = () => {
         <div className="container mx-auto py-4">
           <Button 
             variant="ghost" 
+            size="icon"
             onClick={() => navigate("/shop")}
             className="mb-4"
           >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Shop
+            <ArrowLeft className="h-5 w-5" />
           </Button>
           
           <div className="flex items-center gap-3">

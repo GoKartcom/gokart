@@ -176,16 +176,15 @@ const Shop = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      {/* Back to Home Button */}
+      {/* Back Button */}
       <div className="bg-card border-b border-border">
         <div className="container mx-auto py-3">
           <Button 
             variant="ghost" 
+            size="icon"
             onClick={() => navigate("/")}
-            className="gap-2"
           >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Home
+            <ArrowLeft className="h-5 w-5" />
           </Button>
         </div>
       </div>

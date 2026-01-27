@@ -116,7 +116,7 @@ export default function Orders() {
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="container mx-auto px-4 py-8">
-        <BackButton label="Back" className="mb-4" />
+        <BackButton className="mb-4" />
         <h1 className="font-display text-3xl font-bold text-foreground mb-8">
           Your Orders
         </h1>
