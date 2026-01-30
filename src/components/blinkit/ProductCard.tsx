@@ -66,8 +66,8 @@ export function ProductCard({
         </div>
       )}
 
-      {/* Image - smaller on mobile */}
-      <div className="relative aspect-square md:aspect-[4/3] mb-2 md:mb-3 rounded-lg overflow-hidden bg-secondary">
+      {/* Image - compact on mobile */}
+      <div className="relative aspect-[4/3] md:aspect-[4/3] mb-1 md:mb-2 rounded-lg overflow-hidden bg-secondary">
         <img
           src={image}
           alt={name}

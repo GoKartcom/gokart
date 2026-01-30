@@ -16,16 +16,22 @@ interface CategoryStripProps {
 }
 
 const categories = [
-  { id: "dairy-breakfast", name: "Dairy & Breakfast", image: dairyMilk },
-  { id: "fruits-vegetables", name: "Fruits & Vegetables", image: vegTomatoes },
-  { id: "snacks-munchies", name: "Snacks & Munchies", image: snackChips },
-  { id: "cold-drinks-juices", name: "Cold Drinks & Juices", image: drinkJuice },
-  { id: "instant-frozen", name: "Instant & Frozen", image: instantNoodles },
-  { id: "tea-coffee", name: "Tea, Coffee & More", image: drinkTea },
-  { id: "bakery-biscuits", name: "Bakery & Biscuits", image: bakeryBread },
-  { id: "sweet-tooth", name: "Sweet Tooth", image: sweetChocolate },
-  { id: "atta-rice-dal", name: "Atta, Rice & Dal", image: stapleRice },
-  { id: "dryfruits-masala", name: "Dry Fruits & Masala", image: dryfruitMix },
+  { id: "dairy-breakfast", name: "Dairy", image: dairyMilk },
+  { id: "fruits-vegetables", name: "Fruits & Veggies", image: vegTomatoes },
+  { id: "snacks-munchies", name: "Snacks", image: snackChips },
+  { id: "cold-drinks-juices", name: "Drinks", image: drinkJuice },
+  { id: "instant-frozen", name: "Instant", image: instantNoodles },
+  { id: "tea-coffee", name: "Tea & Coffee", image: drinkTea },
+  { id: "bakery-biscuits", name: "Bakery", image: bakeryBread },
+  { id: "sweet-tooth", name: "Sweets", image: sweetChocolate },
+  { id: "atta-rice-dal", name: "Staples", image: stapleRice },
+  { id: "dryfruits-masala", name: "Dry Fruits", image: dryfruitMix },
+  { id: "pharmacy", name: "Pharmacy", icon: "💊" },
+  { id: "electrical", name: "Electrical", icon: "⚡" },
+  { id: "meat-chicken", name: "Meat & Chicken", icon: "🍗" },
+  { id: "kirana", name: "Kirana Store", icon: "🏪" },
+  { id: "pet-care", name: "Pet Care", icon: "🐾" },
+  { id: "baby-care", name: "Baby Care", icon: "👶" },
 ];
 
 export function CategoryStrip({ onCategorySelect, selectedCategory }: CategoryStripProps) {
@@ -48,25 +54,29 @@ export function CategoryStrip({ onCategorySelect, selectedCategory }: CategorySt
             <button
               key={category.id}
               onClick={() => handleCategoryClick(category.id)}
-              className={`flex flex-col items-center gap-1 min-w-[56px] md:min-w-[64px] group transition-all ${
+              className={`flex flex-col items-center gap-0.5 min-w-[48px] md:min-w-[52px] group transition-all ${
                 selectedCategory === category.id ? "scale-105" : ""
               }`}
             >
-              <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform border-2 ${
+              <div className={`w-9 h-9 md:w-10 md:h-10 rounded-lg overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform border ${
                 selectedCategory === category.id 
                   ? "border-primary shadow-md" 
-                  : "border-transparent"
-              }`}>
-                <img 
-                  src={category.image} 
-                  alt={category.name}
-                  className="w-full h-full object-cover"
-                />
+                  : "border-border"
+              } ${'icon' in category ? 'bg-secondary' : ''}`}>
+                {'image' in category ? (
+                  <img 
+                    src={category.image} 
+                    alt={category.name}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <span className="text-lg">{category.icon}</span>
+                )}
               </div>
-              <span className={`text-[10px] md:text-xs text-center font-medium line-clamp-1 max-w-[56px] md:max-w-[64px] ${
+              <span className={`text-[9px] md:text-[10px] text-center font-medium line-clamp-1 max-w-[48px] md:max-w-[52px] ${
                 selectedCategory === category.id 
                   ? "text-primary font-semibold" 
-                  : "text-foreground"
+                  : "text-muted-foreground"
               }`}>
                 {category.name}
               </span>

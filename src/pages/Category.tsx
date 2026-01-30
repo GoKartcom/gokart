@@ -219,6 +219,12 @@ const categoryInfo: Record<string, { title: string; emoji: string; description: 
   "sweet-tooth": { title: "Sweet Tooth", emoji: "🍫", description: "Chocolates, sweets, and desserts" },
   "atta-rice-dal": { title: "Atta, Rice & Dal", emoji: "🍚", description: "Daily staples - atta, rice, and pulses" },
   "dryfruits-masala": { title: "Dry Fruits & Masala", emoji: "🥜", description: "Premium dry fruits and cooking spices" },
+  "pharmacy": { title: "Pharmacy", emoji: "💊", description: "Medicines, health supplements, and first aid" },
+  "electrical": { title: "Electrical Services", emoji: "⚡", description: "Electricians, repairs, and electrical supplies nearby" },
+  "meat-chicken": { title: "Meat & Chicken", emoji: "🍗", description: "Fresh meat, chicken, and seafood from local shops" },
+  "kirana": { title: "Kirana Store", emoji: "🏪", description: "Local grocery stores and daily essentials" },
+  "pet-care": { title: "Pet Care", emoji: "🐾", description: "Pet food, accessories, and pet care products" },
+  "baby-care": { title: "Baby Care", emoji: "👶", description: "Diapers, baby food, and infant care essentials" },
 };
 
 const Category = () => {
