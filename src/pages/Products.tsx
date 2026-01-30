@@ -9,6 +9,7 @@ import { useCart } from "@/context/CartContext";
 import tomatoesImg from "@/assets/product-tomatoes.jpg";
 import spinachImg from "@/assets/product-spinach.jpg";
 import { BackButton } from "@/components/BackButton";
+import { CategoryStrip } from "@/components/blinkit/CategoryStrip";
 
 const categories = ["All", "Vegetables", "Fruits", "Leafy Greens", "Organic", "Bestsellers", "Offers"];
 
@@ -116,9 +117,10 @@ export default function Products() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main className="container mx-auto px-4 py-8">
+      <CategoryStrip />
+      <main className="container mx-auto px-4 py-6">
         {/* Back Button */}
-        <BackButton className="mb-4" />
+        <BackButton className="mb-3" />
         
         {/* Header */}
         <div className="mb-8">
