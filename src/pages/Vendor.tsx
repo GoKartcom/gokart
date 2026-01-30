@@ -16,6 +16,7 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import vendor2 from "@/assets/vendor-2.jpg";
 import { BackButton } from "@/components/BackButton";
+import { CategoryStrip } from "@/components/blinkit/CategoryStrip";
 
 const benefits = [
   {
@@ -69,6 +70,7 @@ export default function Vendor() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
+      <CategoryStrip />
       <main>
         {/* Hero */}
         <section className="gradient-hero py-20">
