@@ -5,6 +5,8 @@ import { CategoryStrip } from "@/components/blinkit/CategoryStrip";
 import { ProductSection } from "@/components/blinkit/ProductSection";
 import { BlinkitFooter } from "@/components/blinkit/Footer";
 import { Button } from "@/components/ui/button";
+import { BottomNav } from "@/components/blinkit/BottomNav";
+import { DeliveryBanner } from "@/components/blinkit/DeliveryBanner";
 
 // Dairy & Breakfast Products
 import dairyMilk from "@/assets/products/dairy-milk.jpg";
@@ -55,6 +57,14 @@ import instantNoodles from "@/assets/products/instant-noodles.jpg";
 
 // Sweet Tooth
 import sweetChocolate from "@/assets/products/sweet-chocolate.jpg";
+
+// New Categories
+import pharmacyItems from "@/assets/products/pharmacy-items.jpg";
+import electricalItems from "@/assets/products/electrical-items.jpg";
+import meatChicken from "@/assets/products/meat-chicken.jpg";
+import kiranaItems from "@/assets/products/kirana-items.jpg";
+import petCare from "@/assets/products/pet-care.jpg";
+import babyCare from "@/assets/products/baby-care.jpg";
 
 // Category-specific product data
 const categoryProducts: Record<string, Array<{
@@ -206,6 +216,90 @@ const categoryProducts: Record<string, Array<{
     { id: 905, name: "Coriander Powder", price: 40, originalPrice: 48, image: dryfruitMix, unit: "100g", discount: 17 },
     { id: 906, name: "Cumin Seeds", price: 85, originalPrice: 100, image: dryfruitMix, unit: "100g", discount: 15 },
   ],
+  "pharmacy": [
+    { id: 1001, name: "Crocin Pain Relief", price: 35, originalPrice: 42, image: pharmacyItems, unit: "15 tablets", discount: 17 },
+    { id: 1002, name: "Dettol Antiseptic", price: 85, originalPrice: 100, image: pharmacyItems, unit: "125ml", discount: 15 },
+    { id: 1003, name: "Vitamin C Tablets", price: 180, originalPrice: 220, image: pharmacyItems, unit: "60 tablets", discount: 18 },
+    { id: 1004, name: "Band-Aid Box", price: 45, originalPrice: 55, image: pharmacyItems, unit: "20 strips", discount: 18 },
+    { id: 1005, name: "Digene Antacid", price: 55, originalPrice: 65, image: pharmacyItems, unit: "15 tablets", discount: 15 },
+    { id: 1006, name: "Vicks VapoRub", price: 95, originalPrice: 115, image: pharmacyItems, unit: "50g", discount: 17 },
+    { id: 1007, name: "ORS Sachets", price: 25, originalPrice: 30, image: pharmacyItems, unit: "5 sachets", discount: 17 },
+    { id: 1008, name: "Cotton Wool", price: 40, originalPrice: 48, image: pharmacyItems, unit: "50g", discount: 17 },
+    { id: 1009, name: "Hand Sanitizer", price: 75, originalPrice: 90, image: pharmacyItems, unit: "200ml", discount: 17 },
+    { id: 1010, name: "Face Mask N95", price: 120, originalPrice: 150, image: pharmacyItems, unit: "5 pcs", discount: 20 },
+    { id: 1011, name: "Multivitamin", price: 250, originalPrice: 300, image: pharmacyItems, unit: "30 capsules", discount: 17 },
+    { id: 1012, name: "First Aid Kit", price: 350, originalPrice: 420, image: pharmacyItems, unit: "1 kit", discount: 17 },
+  ],
+  "electrical": [
+    { id: 1101, name: "LED Bulb 9W", price: 85, originalPrice: 100, image: electricalItems, unit: "1 pc", discount: 15 },
+    { id: 1102, name: "Extension Board", price: 350, originalPrice: 420, image: electricalItems, unit: "4 socket", discount: 17 },
+    { id: 1103, name: "Wire Cutter", price: 180, originalPrice: 220, image: electricalItems, unit: "1 pc", discount: 18 },
+    { id: 1104, name: "Electrical Tape", price: 25, originalPrice: 30, image: electricalItems, unit: "1 roll", discount: 17 },
+    { id: 1105, name: "Switch Board", price: 120, originalPrice: 145, image: electricalItems, unit: "4 module", discount: 17 },
+    { id: 1106, name: "Ceiling Fan", price: 1450, originalPrice: 1800, image: electricalItems, unit: "1 pc", discount: 19 },
+    { id: 1107, name: "USB Charger", price: 250, originalPrice: 300, image: electricalItems, unit: "1 pc", discount: 17 },
+    { id: 1108, name: "LED Strip Light", price: 320, originalPrice: 400, image: electricalItems, unit: "5 meter", discount: 20 },
+    { id: 1109, name: "Screwdriver Set", price: 280, originalPrice: 350, image: electricalItems, unit: "6 pcs", discount: 20 },
+    { id: 1110, name: "Electric Tester", price: 45, originalPrice: 55, image: electricalItems, unit: "1 pc", discount: 18 },
+    { id: 1111, name: "MCB Switch", price: 180, originalPrice: 220, image: electricalItems, unit: "16A", discount: 18 },
+    { id: 1112, name: "Tube Light", price: 250, originalPrice: 300, image: electricalItems, unit: "20W", discount: 17 },
+  ],
+  "meat-chicken": [
+    { id: 1201, name: "Chicken Breast", price: 280, originalPrice: 340, image: meatChicken, unit: "500g", discount: 18 },
+    { id: 1202, name: "Mutton Curry Cut", price: 650, originalPrice: 780, image: meatChicken, unit: "500g", discount: 17 },
+    { id: 1203, name: "Chicken Drumsticks", price: 220, originalPrice: 260, image: meatChicken, unit: "500g", discount: 15 },
+    { id: 1204, name: "Fish Rohu", price: 320, originalPrice: 380, image: meatChicken, unit: "500g", discount: 16 },
+    { id: 1205, name: "Chicken Wings", price: 180, originalPrice: 220, image: meatChicken, unit: "500g", discount: 18 },
+    { id: 1206, name: "Prawns Medium", price: 450, originalPrice: 550, image: meatChicken, unit: "250g", discount: 18 },
+    { id: 1207, name: "Chicken Mince", price: 240, originalPrice: 290, image: meatChicken, unit: "500g", discount: 17 },
+    { id: 1208, name: "Lamb Chops", price: 720, originalPrice: 880, image: meatChicken, unit: "500g", discount: 18 },
+    { id: 1209, name: "Chicken Liver", price: 120, originalPrice: 145, image: meatChicken, unit: "250g", discount: 17 },
+    { id: 1210, name: "Surmai Fish", price: 550, originalPrice: 650, image: meatChicken, unit: "500g", discount: 15 },
+    { id: 1211, name: "Whole Chicken", price: 380, originalPrice: 450, image: meatChicken, unit: "1 kg", discount: 16 },
+    { id: 1212, name: "Chicken Keema", price: 260, originalPrice: 310, image: meatChicken, unit: "500g", discount: 16 },
+  ],
+  "kirana": [
+    { id: 1301, name: "Salt Iodized", price: 20, originalPrice: 25, image: kiranaItems, unit: "1 kg", discount: 20 },
+    { id: 1302, name: "Sugar", price: 48, originalPrice: 55, image: kiranaItems, unit: "1 kg", discount: 13 },
+    { id: 1303, name: "Cooking Oil", price: 180, originalPrice: 210, image: kiranaItems, unit: "1 ltr", discount: 14 },
+    { id: 1304, name: "Besan", price: 65, originalPrice: 78, image: kiranaItems, unit: "500g", discount: 17 },
+    { id: 1305, name: "Poha Flakes", price: 45, originalPrice: 55, image: kiranaItems, unit: "500g", discount: 18 },
+    { id: 1306, name: "Jaggery", price: 85, originalPrice: 100, image: kiranaItems, unit: "500g", discount: 15 },
+    { id: 1307, name: "Mustard Oil", price: 165, originalPrice: 195, image: kiranaItems, unit: "1 ltr", discount: 15 },
+    { id: 1308, name: "Ghee Desi", price: 550, originalPrice: 650, image: kiranaItems, unit: "500g", discount: 15 },
+    { id: 1309, name: "Pickle Mango", price: 95, originalPrice: 115, image: kiranaItems, unit: "400g", discount: 17 },
+    { id: 1310, name: "Papad", price: 55, originalPrice: 65, image: kiranaItems, unit: "200g", discount: 15 },
+    { id: 1311, name: "Vermicelli", price: 35, originalPrice: 42, image: kiranaItems, unit: "200g", discount: 17 },
+    { id: 1312, name: "Tamarind Paste", price: 65, originalPrice: 78, image: kiranaItems, unit: "200g", discount: 17 },
+  ],
+  "pet-care": [
+    { id: 1401, name: "Dog Food Pedigree", price: 450, originalPrice: 520, image: petCare, unit: "3 kg", discount: 13 },
+    { id: 1402, name: "Cat Food Whiskas", price: 380, originalPrice: 450, image: petCare, unit: "1.2 kg", discount: 16 },
+    { id: 1403, name: "Dog Treats", price: 180, originalPrice: 220, image: petCare, unit: "200g", discount: 18 },
+    { id: 1404, name: "Pet Shampoo", price: 250, originalPrice: 300, image: petCare, unit: "250ml", discount: 17 },
+    { id: 1405, name: "Dog Leash", price: 320, originalPrice: 400, image: petCare, unit: "1 pc", discount: 20 },
+    { id: 1406, name: "Cat Litter", price: 420, originalPrice: 500, image: petCare, unit: "5 kg", discount: 16 },
+    { id: 1407, name: "Pet Bowl Set", price: 280, originalPrice: 350, image: petCare, unit: "2 pcs", discount: 20 },
+    { id: 1408, name: "Dog Toy Ball", price: 120, originalPrice: 150, image: petCare, unit: "1 pc", discount: 20 },
+    { id: 1409, name: "Flea Collar", price: 350, originalPrice: 420, image: petCare, unit: "1 pc", discount: 17 },
+    { id: 1410, name: "Fish Food", price: 85, originalPrice: 100, image: petCare, unit: "100g", discount: 15 },
+    { id: 1411, name: "Pet Comb", price: 150, originalPrice: 180, image: petCare, unit: "1 pc", discount: 17 },
+    { id: 1412, name: "Bird Seeds", price: 120, originalPrice: 145, image: petCare, unit: "500g", discount: 17 },
+  ],
+  "baby-care": [
+    { id: 1501, name: "Pampers Diapers", price: 650, originalPrice: 780, image: babyCare, unit: "40 pcs", discount: 17 },
+    { id: 1502, name: "Baby Powder Johnson", price: 180, originalPrice: 220, image: babyCare, unit: "200g", discount: 18 },
+    { id: 1503, name: "Baby Oil", price: 220, originalPrice: 260, image: babyCare, unit: "200ml", discount: 15 },
+    { id: 1504, name: "Baby Wipes", price: 150, originalPrice: 180, image: babyCare, unit: "72 pcs", discount: 17 },
+    { id: 1505, name: "Cerelac Stage 1", price: 280, originalPrice: 340, image: babyCare, unit: "300g", discount: 18 },
+    { id: 1506, name: "Feeding Bottle", price: 250, originalPrice: 300, image: babyCare, unit: "250ml", discount: 17 },
+    { id: 1507, name: "Baby Lotion", price: 195, originalPrice: 230, image: babyCare, unit: "200ml", discount: 15 },
+    { id: 1508, name: "Baby Soap", price: 85, originalPrice: 100, image: babyCare, unit: "100g", discount: 15 },
+    { id: 1509, name: "Diaper Rash Cream", price: 165, originalPrice: 200, image: babyCare, unit: "50g", discount: 17 },
+    { id: 1510, name: "Baby Shampoo", price: 175, originalPrice: 210, image: babyCare, unit: "200ml", discount: 17 },
+    { id: 1511, name: "Sippy Cup", price: 220, originalPrice: 270, image: babyCare, unit: "1 pc", discount: 18 },
+    { id: 1512, name: "Teether Ring", price: 120, originalPrice: 145, image: babyCare, unit: "1 pc", discount: 17 },
+  ],
 };
 
 const categoryInfo: Record<string, { title: string; emoji: string; description: string }> = {
@@ -251,33 +345,34 @@ const Category = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-16 md:pb-0">
+      <DeliveryBanner />
       <Header />
       <CategoryStrip selectedCategory={categoryId} />
       
       {/* Back Button & Category Header */}
       <div className="bg-card border-b border-border">
-        <div className="container mx-auto py-4">
+        <div className="container mx-auto py-3">
           <Button 
             variant="ghost" 
             size="icon"
             onClick={() => navigate("/shop")}
-            className="mb-4"
+            className="mb-2 h-8 w-8"
           >
-            <ArrowLeft className="h-5 w-5" />
+            <ArrowLeft className="h-4 w-4" />
           </Button>
           
-          <div className="flex items-center gap-3">
-            <span className="text-4xl">{category.emoji}</span>
+          <div className="flex items-center gap-2">
+            <span className="text-2xl">{category.emoji}</span>
             <div>
-              <h1 className="text-2xl font-bold text-foreground">{category.title}</h1>
-              <p className="text-muted-foreground">{category.description}</p>
+              <h1 className="text-lg font-bold text-foreground">{category.title}</h1>
+              <p className="text-xs text-muted-foreground">{category.description}</p>
             </div>
           </div>
         </div>
       </div>
       
-      <main className="py-6">
+      <main className="py-4">
         <ProductSection 
           title={`${category.emoji} All ${category.title}`} 
           products={products} 
@@ -285,6 +380,7 @@ const Category = () => {
       </main>
       
       <BlinkitFooter />
+      <BottomNav />
     </div>
   );
 };

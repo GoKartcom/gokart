@@ -9,6 +9,12 @@ import bakeryBread from "@/assets/products/bakery-bread.jpg";
 import sweetChocolate from "@/assets/products/sweet-chocolate.jpg";
 import stapleRice from "@/assets/products/staple-rice.jpg";
 import dryfruitMix from "@/assets/products/dryfruit-mix.jpg";
+import pharmacyItems from "@/assets/products/pharmacy-items.jpg";
+import electricalItems from "@/assets/products/electrical-items.jpg";
+import meatChicken from "@/assets/products/meat-chicken.jpg";
+import kiranaItems from "@/assets/products/kirana-items.jpg";
+import petCare from "@/assets/products/pet-care.jpg";
+import babyCare from "@/assets/products/baby-care.jpg";
 
 interface CategoryStripProps {
   onCategorySelect?: (categoryId: string) => void;
@@ -26,12 +32,12 @@ const categories = [
   { id: "sweet-tooth", name: "Sweets", image: sweetChocolate },
   { id: "atta-rice-dal", name: "Staples", image: stapleRice },
   { id: "dryfruits-masala", name: "Dry Fruits", image: dryfruitMix },
-  { id: "pharmacy", name: "Pharmacy", icon: "💊" },
-  { id: "electrical", name: "Electrical", icon: "⚡" },
-  { id: "meat-chicken", name: "Meat & Chicken", icon: "🍗" },
-  { id: "kirana", name: "Kirana Store", icon: "🏪" },
-  { id: "pet-care", name: "Pet Care", icon: "🐾" },
-  { id: "baby-care", name: "Baby Care", icon: "👶" },
+  { id: "pharmacy", name: "Pharmacy", image: pharmacyItems },
+  { id: "electrical", name: "Electrical", image: electricalItems },
+  { id: "meat-chicken", name: "Meat & Chicken", image: meatChicken },
+  { id: "kirana", name: "Kirana Store", image: kiranaItems },
+  { id: "pet-care", name: "Pet Care", image: petCare },
+  { id: "baby-care", name: "Baby Care", image: babyCare },
 ];
 
 export function CategoryStrip({ onCategorySelect, selectedCategory }: CategoryStripProps) {
@@ -62,16 +68,12 @@ export function CategoryStrip({ onCategorySelect, selectedCategory }: CategorySt
                 selectedCategory === category.id 
                   ? "border-primary shadow-md" 
                   : "border-border"
-              } ${'icon' in category ? 'bg-secondary' : ''}`}>
-                {'image' in category ? (
-                  <img 
-                    src={category.image} 
-                    alt={category.name}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <span className="text-lg">{category.icon}</span>
-                )}
+              }`}>
+                <img 
+                  src={category.image} 
+                  alt={category.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <span className={`text-[9px] md:text-[10px] text-center font-medium line-clamp-1 max-w-[48px] md:max-w-[52px] ${
                 selectedCategory === category.id 

@@ -7,6 +7,10 @@ import { HeroBanner } from "@/components/blinkit/HeroBanner";
 import { ProductSection } from "@/components/blinkit/ProductSection";
 import { BlinkitFooter } from "@/components/blinkit/Footer";
 import { Button } from "@/components/ui/button";
+import { QuickReorder } from "@/components/blinkit/QuickReorder";
+import { OffersCarousel } from "@/components/blinkit/OffersCarousel";
+import { BottomNav } from "@/components/blinkit/BottomNav";
+import { DeliveryBanner } from "@/components/blinkit/DeliveryBanner";
 
 // Dairy & Breakfast Products
 import dairyMilk from "@/assets/products/dairy-milk.jpg";
@@ -173,25 +177,37 @@ const Shop = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-16 md:pb-0">
+      <DeliveryBanner />
       <Header />
       
       {/* Back Button */}
       <div className="bg-card border-b border-border">
-        <div className="container mx-auto py-3">
+        <div className="container mx-auto py-2">
           <Button 
             variant="ghost" 
             size="icon"
             onClick={() => navigate("/")}
+            className="h-8 w-8"
           >
-            <ArrowLeft className="h-5 w-5" />
+            <ArrowLeft className="h-4 w-4" />
           </Button>
         </div>
       </div>
       
       <CategoryStrip onCategorySelect={handleCategorySelect} selectedCategory={selectedCategory} />
-      <main>
+      <main className="space-y-4">
         <HeroBanner />
+        
+        {/* Offers Carousel */}
+        <div className="container mx-auto px-4">
+          <OffersCarousel />
+        </div>
+        
+        {/* Quick Reorder */}
+        <div className="container mx-auto px-4">
+          <QuickReorder />
+        </div>
         
         {/* Deal of the Day - Always visible at top */}
         <ProductSection title="🔥 Deal of the Day" products={dealOfTheDay} />
@@ -239,6 +255,7 @@ const Shop = () => {
         </div>
       </main>
       <BlinkitFooter />
+      <BottomNav />
     </div>
   );
 };
