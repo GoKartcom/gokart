@@ -42,15 +42,15 @@ export function BlinkitFooter() {
             <ul className="space-y-3 text-sm text-background/70">
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4" />
-                <span>support@klickit.com</span>
+                <span>klickigt.qcom@gmail.com</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4" />
-                <span>+91 98765 43210</span>
+                <span>+91 9529647402</span>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 shrink-0 mt-0.5" />
-                <span>Sector 18, Noida, Uttar Pradesh 201301</span>
+                <span>Mumbai Vasai, Maharashtra, India</span>
               </li>
             </ul>
           </div>

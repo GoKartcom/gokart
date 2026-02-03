@@ -57,17 +57,17 @@ export function ProductCard({
   };
 
   return (
-    <div className="bg-card rounded-xl border border-border p-3 hover:shadow-card transition-all group relative">
+    <div className="bg-card rounded-lg border border-border p-2 hover:shadow-card transition-all group relative">
       {discount && (
-        <div className="absolute top-2 left-2 z-10">
-          <span className="bg-primary text-primary-foreground text-xs font-bold px-2 py-1 rounded">
+        <div className="absolute top-1 left-1 z-10">
+          <span className="bg-primary text-primary-foreground text-[10px] font-bold px-1.5 py-0.5 rounded">
             {discount}% OFF
           </span>
         </div>
       )}
 
-      {/* Image - compact on mobile */}
-      <div className="relative aspect-[4/3] md:aspect-[4/3] mb-1 md:mb-2 rounded-lg overflow-hidden bg-secondary">
+      {/* Image - ultra compact on mobile */}
+      <div className="relative aspect-square mb-1 rounded-md overflow-hidden bg-secondary">
         <img
           src={image}
           alt={name}
@@ -76,22 +76,22 @@ export function ProductCard({
       </div>
 
       {/* Content */}
-      <div className="space-y-2">
+      <div className="space-y-0.5">
         <div className="flex items-center gap-1">
-          <span className="text-xs text-blinkit-green font-medium">⚡ 8 MINS</span>
+          <span className="text-[10px] text-blinkit-green font-medium">⚡ 10 MINS</span>
         </div>
 
-        <h3 className="font-medium text-foreground text-sm line-clamp-2 min-h-[40px]">
+        <h3 className="font-medium text-foreground text-xs line-clamp-2 min-h-[28px] leading-tight">
           {name}
         </h3>
 
-        <p className="text-xs text-muted-foreground">{unit}</p>
+        <p className="text-[10px] text-muted-foreground">{unit}</p>
 
-        <div className="flex items-center justify-between pt-1">
-          <div className="flex items-center gap-2">
-            <span className="font-bold text-foreground">₹{price}</span>
+        <div className="flex items-center justify-between">
+          <div className="flex flex-col">
+            <span className="font-bold text-foreground text-sm">₹{price}</span>
             {originalPrice && originalPrice > price && (
-              <span className="text-xs text-muted-foreground line-through">
+              <span className="text-[10px] text-muted-foreground line-through">
                 ₹{originalPrice}
               </span>
             )}
@@ -101,32 +101,32 @@ export function ProductCard({
             <Button
               size="sm"
               variant="outline"
-              className="h-8 px-4 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold"
+              className="h-6 px-2 text-xs border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold"
               onClick={handleAdd}
               disabled={isAdding}
             >
               ADD
             </Button>
           ) : (
-            <div className="flex items-center gap-1 bg-primary rounded-md">
+            <div className="flex items-center gap-0.5 bg-primary rounded">
               <Button
                 size="icon"
                 variant="ghost"
-                className="h-8 w-8 text-primary-foreground hover:bg-accent"
+                className="h-6 w-6 text-primary-foreground hover:bg-accent"
                 onClick={handleDecrease}
               >
-                <Minus className="h-4 w-4" />
+                <Minus className="h-3 w-3" />
               </Button>
-              <span className="text-primary-foreground font-semibold w-6 text-center">
+              <span className="text-primary-foreground font-semibold w-4 text-center text-xs">
                 {quantity}
               </span>
               <Button
                 size="icon"
                 variant="ghost"
-                className="h-8 w-8 text-primary-foreground hover:bg-accent"
+                className="h-6 w-6 text-primary-foreground hover:bg-accent"
                 onClick={handleIncrease}
               >
-                <Plus className="h-4 w-4" />
+                <Plus className="h-3 w-3" />
               </Button>
             </div>
           )}
